@@ -13,3 +13,4 @@ const userSchema = new Schema({
         type: String,
         required: [true, 'Please enter a password'],
     },
+});
