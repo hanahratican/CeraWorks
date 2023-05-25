@@ -6,7 +6,7 @@
 </head>
 <body>
     <style> 
-    /* Reset default margin and padding */
+ /* Reset default margin and padding */
 body, h1, h2, h3, h4, h5, h6, p, ul, li {
   margin: 0;
   padding: 0;
@@ -79,6 +79,73 @@ header {
   outline: none;
 }
 
+/* Main content styles */
+main {
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  transition: background-color 0.3s ease;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input,
+select,
+button {
+  margin-top: 5px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.service-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.service-button {
+  flex: 1;
+  margin-right: 10px;
+  background-color: #ccc;
+  color: #333;
+}
+
+.service-button.selected {
+  background-color: #333; /*SELECTED BUTTON COLOR */
+  color: #fff;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #222;
+  color: #222;
+}
+
 /* Custom styles */
 .toggle-container {
   display: flex;
@@ -91,7 +158,6 @@ header {
   margin-left: 10px;
 }
 
-    
     </style>
 
 
