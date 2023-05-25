@@ -15,27 +15,20 @@ const userSchema = new Schema({
     },
 });
 
-
-
 userSchema.pre('save', async function (next) {
-    const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-}
-);
-
-userSchema.statics.login = async function (email, password) {
-    const user = await this.findOne({ email });
-    if (user) {
-        const auth = await bcrypt.compare(password, user.password);
-        if (auth) {
-            return user;
-        }
-        throw Error('incorrect password');
+    if (this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
     }
-    throw Error('incorrect email');
+});
+
+userSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password);
 }
 
 const User = model('user', userSchema);
 
 module.exports = User;
+
+
+
