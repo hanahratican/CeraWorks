@@ -1,5 +1,5 @@
 import React from 'react'
-import {FaBars, FaTimes} from 'react-icons'
+import {FaBars} from 'react-icons/fa'
 // import Logo from '../assets/logo.png'
 
 
@@ -12,7 +12,7 @@ const NavTabs = () => {
       
       {/* Navbar */}
       <div>
-        <ul>
+        <ul className='flex'>
           <li>Home</li>
           <li>Login</li>
           <li>Services</li>
