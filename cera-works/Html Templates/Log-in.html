@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    /* Reset default margin and padding */
+    body, h1, h2, h3, h4, h5, h6, p, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set a background color for the body */
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Main content styles */
+    main {
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      transition: background-color 0.3s ease;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input,
+    select,
+    button {
+      margin-top: 5px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    /* Footer styles */
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+
+    /* Dark mode styles */
+    .dark-mode {
+      background-color: #222;
+      color: #222;
+    }
+
+    /* Custom styles */
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-right: 10px;
+    }
+
+    #dark-mode-toggle {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section id="login">
+      <h2>Login</h2>
+      <form id="login-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">Login</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white p-2">
+    <p>&copy; 2023 XYZ Car Detailing. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript code for form submission, validation, and caching user details using localStorage
+    const loginForm = document.getElementById('login-form');
+    const formFields = ['username', 'email', 'password'];
+
+    // Check if there is a preferred mode in localStorage
+    const preferredMode = localStorage.getItem('preferredMode');
+    if (preferredMode === 'dark') {
+      enableDarkMode();
+    }
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get form field values
+      const formData = {};
+      formFields.forEach(field => {
+        const inputField = document.getElementById(field);
+        formData[field] = inputField.value;
+      });
+
+      // Perform validation or further processing as needed
+      // For example, you can send the form data to a server using AJAX
+
+      // Cache the user details in localStorage
+      cacheUserDetails(formData);
+
+      // Clear the form after submission (optional)
+      loginForm.reset();
+    });
+
+    // Autofill the form with cached user details
+    function autofillForm(userDetails) {
+      formFields.forEach(field => {
+        const inputField = document.getElementById(field);
+        inputField.value = userDetails[field] || '';
+      });
+    }
+
+    // Cache the user details in localStorage
+    function cacheUserDetails(userDetails) {
+      localStorage.setItem('userDetails', JSON.stringify(userDetails));
+    }
+
+    // Check if there are cached user details and autofill the form
+    const cachedUserDetails = localStorage.getItem('userDetails');
+    if (cachedUserDetails) {
+      autofillForm(JSON.parse(cachedUserDetails));
+    }
+
+    // Toggle dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+      if (body.classList.contains('dark-mode')) {
+        disableDarkMode();
+        localStorage.setItem('preferredMode', 'light');
+      } else {
+        enableDarkMode();
+        localStorage.setItem('preferredMode', 'dark');
+      }
+    }
+
+    // Enable dark mode
+    function enableDarkMode() {
+      const body = document.body;
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+      body.classList.add('dark-mode');
+      darkModeToggle.innerText = 'Light Mode';
+    }
+
+    // Disable dark mode
+    function disableDarkMode() {
+      const body = document.body;
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+      body.classList.remove('dark-mode');
+      darkModeToggle.innerText = 'Dark Mode';
+    }
+  </script>
+</body>
+</html>
