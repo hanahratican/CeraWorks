@@ -1,9 +1,13 @@
-import React from 'react'
-import {FaBars} from 'react-icons/fa'
+import React, {useState} from 'react'
+import {FaBars, FaTimes} from 'react-icons/fa'
 // import Logo from '../assets/logo.png'
 
 
 const NavTabs = () => {
+
+  const [nav, setNav] = useState(false);
+  const handleClick = () => setNav(!nav);
+
   return (
     <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-gray-700 text-white'>
       <div>
@@ -11,28 +15,26 @@ const NavTabs = () => {
       </div>
       
       {/* Navbar */}
-      <div>
-        <ul className='flex'>
+        <ul className='hidden md:flex'>
           <li>Home</li>
           <li>Login</li>
           <li>Services</li>
           <li>Reviews</li>
           <li>Contact</li>
         </ul>
-      </div>
 
       {/* Hamburger Menu*/}
-      <div className='hidden'>
-        <FaBars />
+      <div onClick={handleClick} className='md:hidden z-10'>
+        {!nav ? <FaBars /> : <FaTimes />}
       </div>
 
       {/* Mobile Menu */}
-      <ul className='hidden'>
-      <li>Home</li>
-          <li>Login</li>
-          <li>Services</li>
-          <li>Reviews</li>
-          <li>Contact</li>
+      <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-gray-700 flex flex-col justify-center items-center'}>
+          <li className='py-6 text-4xl'>Home</li>
+          <li className='py-6 text-4xl'>Login</li>
+          <li className='py-6 text-4xl'>Services</li>
+          <li className='py-6 text-4xl'>Reviews</li>
+          <li className='py-6 text-4xl'>Contact</li>
       </ul>
       
     </div>
