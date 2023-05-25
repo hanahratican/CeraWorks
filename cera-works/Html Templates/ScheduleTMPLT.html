@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CeraWorks</title>
+  <style>
+    /* Reset default margin and padding */
+    body, h1, h2, h3, h4, h5, h6, p, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set a background color for the body */
+    body {
+      background-color: #f2f2f2;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Navigation bar styles */
+    header {
+      background-color: #333;
+      padding: 10px;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      float: left;
+    }
+
+    .logo img {
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      list-style-type: none;
+      margin: 0;
+      display: flex;
+      justify-content: flex-end; /* Align to the right */
+      flex-grow: 1; /* Occupy remaining space */
+    }
+
+    .nav-links li {
+      margin-left: 15px; /* Adjust the spacing between the items */
+    }
+
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links li a:hover {
+      color: #ccc;
+    }
+
+    #dark-mode-toggle {
+      background-color: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      outline: none;
+    }
+
+    /* Main content styles */
+    main {
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      flex: 1;
+      transition: background-color 0.3s ease;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input,
+    select,
+    button {
+      margin-top: 5px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .service-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+
+    .service-button {
+      flex: 1;
+      margin-right: 10px;
+      background-color: #ccc;
+      color: #333;
+    }
+
+    .service-button.selected {
+      background-color: #333; /*SELECTED BUTTON COLOR */
+      color: #fff;
+    }
+
+    /* Footer styles */
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+
+    /* Dark mode styles */
+    .dark-mode {
+      background-color: #222;
+      color: #222;
+    }
+
+    /* Custom styles */
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-right: 10px;
+    }
+
+    #dark-mode-toggle {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="navbar">
+        <a href="#home" class="logo">
+          <img src="your-logo.png" alt="Logo">
+          CeraWorks
+        </a>
+
+        <ul class="nav-links">
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+        <div class="toggle-container">
+          <button id="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="appointment">
+      <h2>Schedule an Appointment</h2>
+      <form id="appointment-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" pattern="[0-9]+" required title="Numbers Only">
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" required>
+
+        <label for="make-model">Car Make and Model:</label>
+        <input type="text" id="make-model" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" required>
+
+        <label for="service">Service:</label>
+        <div class="service-buttons">
+          <button type="button" class="service-button" onclick="selectService('Basic Detailing')">Basic Detailing</button>
+          <button type="button" class="service-button" onclick="selectService('Interior Detailing')">Interior Detailing</button>
+          <button type="button" class="service-button" onclick="selectService('Exterior Detailing')">Exterior Detailing</button>
+          <button type="button" class="service-button" onclick="selectService('Full Detailing')">Full Detailing</button>
+        </div>
+
+        <input type="hidden" id="selected-service" required>
+
+        <label for="Payment">ADD STRIPE FUNCTIONALITY HERE:</label>
+        <input type="text" id="text" required>
+
+        <button type="submit">Schedule</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="bg-dark text-white p-2">
+    <p>&copy; 2023 XYZ Car Detailing. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // JavaScript code for form submission, validation, and caching user details using localStorage
+    const appointmentForm = document.getElementById('appointment-form');
+    const formFields = ['name', 'email', 'phone', 'address', 'make-model', 'date', 'time'];
+
+    // Check if there is a preferred mode in localStorage
+    const preferredMode = localStorage.getItem('preferredMode');
+    if (preferredMode === 'dark') {
+      enableDarkMode();
+    }
+
+    appointmentForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get form field values
+      const formData = {};
+      formFields.forEach(field => {
+        const inputField = document.getElementById(field);
+        formData[field] = inputField.value;
+      });
+
+      // Perform validation or further processing as needed
+      // For example, you can send the form data to a server using AJAX
+
+      // Cache the user details in localStorage
+      cacheUserDetails(formData);
+
+      // Clear the form after submission (optional)
+      appointmentForm.reset();
+    });
+
+    // Autofill the form with cached user details
+    function autofillForm(userDetails) {
+      formFields.forEach(field => {
+        const inputField = document.getElementById(field);
+        inputField.value = userDetails[field] || '';
+      });
+    }
+
+    // Cache the user details in localStorage
+    function cacheUserDetails(userDetails) {
+      localStorage.setItem('userDetails', JSON.stringify(userDetails));
+    }
+
+    // Check if there are cached user details and autofill the form
+    const cachedUserDetails = localStorage.getItem('userDetails');
+    if (cachedUserDetails) {
+      autofillForm(JSON.parse(cachedUserDetails));
+    }
+
+    // Toggle dark mode
+    function toggleDarkMode() {
+      const body = document.body;
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+      if (body.classList.contains('dark-mode')) {
+        disableDarkMode();
+        localStorage.setItem('preferredMode', 'light');
+      } else {
+        enableDarkMode();
+        localStorage.setItem('preferredMode', 'dark');
+      }
+    }
+
+    // Enable dark mode
+    function enableDarkMode() {
+      const body = document.body;
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+      body.classList.add('dark-mode');
+      darkModeToggle.innerText = 'Light Mode';
+    }
+
+    // Disable dark mode
+    function disableDarkMode() {
+      const body = document.body;
+      const darkModeToggle = document.getElementById('dark-mode-toggle');
+
+      body.classList.remove('dark-mode');
+      darkModeToggle.innerText = 'Dark Mode';
+    }
+
+    // Select a service
+    function selectService(service) {
+      const selectedServiceInput = document.getElementById('selected-service');
+      selectedServiceInput.value = service;
+
+      const serviceButtons = document.querySelectorAll('.service-button');
+      serviceButtons.forEach(button => {
+        button.classList.remove('selected');
+        if (button.innerText === service) {
+          button.classList.add('selected');
+        }
+      });
+    }
+  </script>
+
+    <!-- Stripe stuff-->
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    var stripe = Stripe('YOUR_STRIPE_PUBLIC_KEY');
+    var elements = stripe.elements();
+    var card = elements.create('card');
+
+    card.mount('#card-element');
+
+    var form = document.getElementById('appointment-form');
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      stripe.createToken(card).then(function(result) {
+        if (result.error) {
+          // Display error message to the user
+          var errorElement = document.getElementById('card-errors');
+          errorElement.textContent = result.error.message;
+        } else {
+          // Send the token to your server
+          stripeTokenHandler(result.token);
+        }
+      });
+    });
+
+    function stripeTokenHandler(token) {
+      // Add the token to a hidden input field
+      var hiddenInput = document.createElement('input');
+      hiddenInput.setAttribute('type', 'hidden');
+      hiddenInput.setAttribute('name', 'stripeToken');
+      hiddenInput.setAttribute('value', token.id);
+      form.appendChild(hiddenInput);
+
+      // Submit the form
+      form.submit();
+    }
+  </script>

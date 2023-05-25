@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CeraWorks</title>
+  <link rel="stylesheet" type="text/css" href="navbar.css">
+</head>
+<body>
+    <style> 
+ /* Reset default margin and padding */
+body, h1, h2, h3, h4, h5, h6, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a background color for the body */
+body {
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+/* Navigation bar styles */
+header {
+  background-color: #333;
+  padding: 10px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  float: left;
+}
+
+.logo img {
+  height: 30px;
+  margin-right: 10px;
+}
+
+.nav-links {
+  list-style-type: none;
+  margin: 0;
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  flex-grow: 1; /* Occupy remaining space */
+}
+
+.nav-links li {
+  margin-left: 15px; /* Adjust the spacing between the items */
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #ccc;
+}
+
+#dark-mode-toggle {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Main content styles */
+main {
+  margin: 20px auto;
+  max-width: 800px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  transition: background-color 0.3s ease;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input,
+select,
+button {
+  margin-top: 5px;
+  padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.service-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.service-button {
+  flex: 1;
+  margin-right: 10px;
+  background-color: #ccc;
+  color: #333;
+}
+
+.service-button.selected {
+  background-color: #333; /*SELECTED BUTTON COLOR */
+  color: #fff;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Dark mode styles */
+.dark-mode {
+  background-color: #222;
+  color: #222;
+}
+
+/* Custom styles */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+#dark-mode-toggle {
+  margin-left: 10px;
+}
+
+    </style>
+
+
+  <header>
+    <nav>
+      <div class="navbar">
+        <a href="#home" class="logo">
+          <img src="your-logo.png" alt="Logo">
+          CeraWorks
+        </a>
+
+        <ul class="nav-links">
+          <li><a class="active" href="#home">Home</a></li>
+          <li><a href="#news">News</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+        <div class="toggle-container">
+          <button id="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <script>
+// Toggle dark mode
+function toggleDarkMode() {
+  const body = document.body;
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const preferredMode = body.classList.contains('dark-mode') ? 'light' : 'dark';
+
+  if (preferredMode === 'dark') {
+    enableDarkMode(body, darkModeToggle);
+  } else {
+    disableDarkMode(body, darkModeToggle);
+  }
+
+  localStorage.setItem('preferredMode', preferredMode);
+}
+
+function enableDarkMode(body, darkModeToggle) {
+  body.classList.add('dark-mode');
+  darkModeToggle.innerText = 'Light Mode';
+}
+
+function disableDarkMode(body, darkModeToggle) {
+  body.classList.remove('dark-mode');
+  darkModeToggle.innerText = 'Dark Mode';
+}
+
+  </script>
+</body>
+</html>
