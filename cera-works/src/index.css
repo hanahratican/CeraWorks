@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: "Proxima Nova";
+    src: url("../src/assets/fonts/Mark\ Simonson\ -\ Proxima\ Nova\ Alt\ Regular-webfont.woff");
+  }
+
+@layer base {
+    body {
+        @apply font-proxima;
+    }
+    li {
+        @apply px-4;
+        @apply cursor-pointer
+    }
+}
