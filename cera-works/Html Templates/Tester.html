@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CeraWorks</title>
+  <style>
+    /* Reset default margin and padding */
+    body, h1, h2, h3, h4, h5, h6, p, ul, li {
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Set a background color for the body */
+    body {
+      background-color: #111;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Banner styles */
+    .banner {
+      height: 100vh;
+      background-image: url('https://wallpapercave.com/dwp1x/wp5163722.jpg');
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: -1;
+    }
+
+    /* Main content styles */
+    main {
+      margin-top: 100vh;
+      padding: 40px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 40px;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a1a1a, #222);
+    }
+
+    .service-cards {
+        max-height: 650px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #fff;
+      font-size: 24px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    input,
+    select,
+    button {
+      margin-top: 5px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: #F38442;
+      color: #fff;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #F38442;
+    }
+
+    .service-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 5px;
+    }
+
+    .service-button {
+      flex: 1;
+      margin-right: 10px;
+      background-color: #ccc;
+      color: #333;
+      transition: background-color 0.3s ease;
+    }
+
+    .service-button.selected {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .service-price {
+      margin-top: 5px;
+      font-weight: bold;
+    }
+
+    /* Footer styles */
+    footer {
+      text-align: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banner"></div>
+  <main>
+    <div class="service-cards">
+      <div class="service-card">
+        <h2>Service 1</h2>
+        <!-- Add content for Service 1 -->
+      </div>
+      <div class="service-card">
+        <h2>Service 2</h2>
+        <!-- Add content for Service 2 -->
+      </div>
+      <div class="service-card">
+        <h2>Service 3</h2>
+        <!-- Add content for Service 3 -->
+      </div>
+      <div class="service-card">
+        <h2>Service 4</h2>
+        <!-- Add content for Service 4 -->
+      </div>
+    </div>
+    <div class="schedule-card">
+      <h2>Schedule an Appointment</h2>
+      <form id="appointment-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" pattern="[0-9]+" required title="Numbers Only">
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" required>
+
+        <label for="make-model">Car Make and Model:</label>
+        <input type="text" id="make-model" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="time">Time:</label>
+        <input type="time" id="time" required>
+
+        <label for="service">Service:</label>
+        <div class="service-buttons">
+          <button type="button" class="service-button selected" onclick="selectService('Basic Detailing', '$50')">Basic Detailing<br><span class="service-price">$50</span></button>
+          <button type="button" class="service-button" onclick="selectService('Interior Detailing', '$80')">Interior Detailing<br><span class="service-price">$80</span></button>
+          <button type="button" class="service-button" onclick="selectService('Exterior Detailing', '$70')">Exterior Detailing<br><span class="service-price">$70</span></button>
+          <button type="button" class="service-button" onclick="selectService('Full Detailing', '$120')">Full Detailing<br><span class="service-price">$120</span></button>
+        </div>
+
+        <input type="hidden" id="selected-service" required>
+
+        <button type="submit">Schedule</button>
+      </form>
+    </div>
+    
+  </main>
+
+  <script>
+    const appointmentForm = document.getElementById('appointment-form');
+    const formFields = ['name', 'email', 'phone', 'address', 'make-model', 'date', 'time'];
+
+    appointmentForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = {};
+      formFields.forEach(field => {
+        const inputField = document.getElementById(field);
+        formData[field] = inputField.value;
+      });
+
+      cacheUserDetails(formData);
+      appointmentForm.reset();
+    });
+
+    function cacheUserDetails(userDetails) {
+      localStorage.setItem('userDetails', JSON.stringify(userDetails));
+    }
+
+    const cachedUserDetails = localStorage.getItem('userDetails');
+    if (cachedUserDetails) {
+      autofillForm(JSON.parse(cachedUserDetails));
+    }
+
+    function selectService(service, price) {
+      const selectedServiceInput = document.getElementById('selected-service');
+      selectedServiceInput.value = service;
+      const serviceButtons = document.querySelectorAll('.service-button');
+      serviceButtons.forEach(button => {
+        button.classList.remove('selected');
+        if (button.innerText.includes(service)) {
+          button.classList.add('selected');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
