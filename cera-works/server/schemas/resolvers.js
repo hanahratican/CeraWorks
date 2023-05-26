@@ -41,6 +41,7 @@ const resolvers = {
             return User.findByIdAndDelete({ _id });
         }
     }
+
 };
 
 module.exports = resolvers;
