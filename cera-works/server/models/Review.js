@@ -7,7 +7,7 @@ const reviewSchema = new Schema({
         unique: true,
     },
     rating: {
-        type: Number,
+        type: Int,
         required: [true, 'Please enter a rating'],
     },
     comment: {
