@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {FaBars, FaTimes} from 'react-icons/fa'
-// import Logo from '../assets/logo.png'
+import Logo from '../assets/logo.png'
 
 
 const NavTabs = () => {
@@ -9,10 +9,9 @@ const NavTabs = () => {
   const handleClick = () => setNav(!nav);
 
   return (
-    <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-gradient-to-r from-sky-500 to-indigo-500 text-white'>
-
+    <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-gradient-to-r from-zinc-300 to-orange-500 text-white'>
       <div>
-        {/* <img src={Logo} alt='Cera Works logo' style={{width:"50px"}}></img> */}
+        <img src={Logo} alt='Cera Works logo' style={{width:"50px"}}></img>
       </div>
       
       {/* Navbar */}
