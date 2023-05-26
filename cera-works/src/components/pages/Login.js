@@ -1,43 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+export const Login = (props) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-class Login extends React.Component {
-    state = {
-        email:'',
-        password:''
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(email);
     }
 
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('You have submitted the login form');
-    }
-
-    handleEmailChange = (event) => {
-        this.setState({ email: event.target.value });
-    }
-
-    handlePasswordChange = (event) => {
-        this.setState({ password: event.target.value });
-    }
-
-    render() {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <h2>Login</h2>
-                <label>
-                    Email
-                    <input type="email" value={this.state.email} onChange={this.handleEmailChange} />
-                </label>
-                <br />
-                <label>
-                    Password
-                    <input type="password" value={this.state.password} onChange={this.handlePasswordChange} /> 
-                </label>
-                <br />
-                <button type="submit">Login</button>
+    return (
+        <div className="auth-form-container">
+            <form onSubmit={handleSubmit}>
+                <label for="email">Email</label>
+                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" id="email" name="email" placeholder="Enter your email" />
+                <label for="password">Password</label>
+                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="password" name="password" placeholder="********" />
+                <button>Log In</button>
             </form>
-        );
-        
-    }
+            <button onClick={() => props.onFormSwitch('signup')}>Dont have an account? Signup here.</button>
+        </div>
+    )
 }
 
-export default Login;
