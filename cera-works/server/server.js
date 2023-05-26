@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Check if this is correct
+// Make sure this is the correct route to the build folder
 if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'public')));
 }
