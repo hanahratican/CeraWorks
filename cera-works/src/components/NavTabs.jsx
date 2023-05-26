@@ -10,6 +10,7 @@ const NavTabs = () => {
 
   return (
     <div className='fixed w-full h-[80px] flex justify-between items-center px-4 bg-gradient-to-r from-sky-500 to-indigo-500 text-white'>
+
       <div>
         {/* <img src={Logo} alt='Cera Works logo' style={{width:"50px"}}></img> */}
       </div>
