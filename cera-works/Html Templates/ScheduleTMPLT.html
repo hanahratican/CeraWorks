@@ -19,65 +19,9 @@
       transition: background-color 0.3s ease;
     }
 
-    /* Navigation bar styles */
-    header {
-      background-color: #333;
-      padding: 10px;
-    }
-
-    .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: white;
-      font-weight: bold;
-      float: left;
-    }
-
-    .logo img {
-      height: 30px;
-      margin-right: 10px;
-    }
-
-    .nav-links {
-      list-style-type: none;
-      margin: 0;
-      display: flex;
-      justify-content: flex-end; /* Align to the right */
-      flex-grow: 1; /* Occupy remaining space */
-    }
-
-    .nav-links li {
-      margin-left: 15px; /* Adjust the spacing between the items */
-    }
-
-    .nav-links li a {
-      color: white;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links li a:hover {
-      color: #ccc;
-    }
-
-    #dark-mode-toggle {
-      background-color: transparent;
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
-      outline: none;
-    }
-
     /* Main content styles */
     main {
+      max-height: 720px;
       margin: 20px auto;
       max-width: 800px;
       padding: 20px;
@@ -125,7 +69,7 @@
     }
 
     .service-button.selected {
-      background-color: #333; /*SELECTED BUTTON COLOR */
+      background-color: #333;
       color: #fff;
     }
 
@@ -154,30 +98,14 @@
     #dark-mode-toggle {
       margin-left: 10px;
     }
+
+    .service-price {
+      margin-top: 5px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="navbar">
-        <a href="#home" class="logo">
-          <img src="your-logo.png" alt="Logo">
-          CeraWorks
-        </a>
-
-        <ul class="nav-links">
-          <li><a class="active" href="#home">Home</a></li>
-          <li><a href="#news">News</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-        <div class="toggle-container">
-          <button id="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
-        </div>
-      </div>
-    </nav>
-  </header>
-
   <main>
     <section id="appointment">
       <h2>Schedule an Appointment</h2>
@@ -205,10 +133,10 @@
 
         <label for="service">Service:</label>
         <div class="service-buttons">
-          <button type="button" class="service-button" onclick="selectService('Basic Detailing')">Basic Detailing</button>
-          <button type="button" class="service-button" onclick="selectService('Interior Detailing')">Interior Detailing</button>
-          <button type="button" class="service-button" onclick="selectService('Exterior Detailing')">Exterior Detailing</button>
-          <button type="button" class="service-button" onclick="selectService('Full Detailing')">Full Detailing</button>
+          <button type="button" class="service-button selected" onclick="selectService('Basic Detailing', '$50')">Basic Detailing<br><span class="service-price">$50</span></button>
+          <button type="button" class="service-button" onclick="selectService('Interior Detailing', '$80')">Interior Detailing<br><span class="service-price">$80</span></button>
+          <button type="button" class="service-button" onclick="selectService('Exterior Detailing', '$70')">Exterior Detailing<br><span class="service-price">$70</span></button>
+          <button type="button" class="service-button" onclick="selectService('Full Detailing', '$120')">Full Detailing<br><span class="service-price">$120</span></button>
         </div>
 
         <input type="hidden" id="selected-service" required>
@@ -221,42 +149,27 @@
     </section>
   </main>
 
-  <footer class="bg-dark text-white p-2">
-    <p>&copy; 2023 XYZ Car Detailing. All rights reserved.</p>
-  </footer>
-
   <script>
-    // JavaScript code for form submission, validation, and caching user details using localStorage
     const appointmentForm = document.getElementById('appointment-form');
     const formFields = ['name', 'email', 'phone', 'address', 'make-model', 'date', 'time'];
-
-    // Check if there is a preferred mode in localStorage
     const preferredMode = localStorage.getItem('preferredMode');
+
     if (preferredMode === 'dark') {
       enableDarkMode();
     }
 
     appointmentForm.addEventListener('submit', function(e) {
       e.preventDefault();
-
-      // Get form field values
       const formData = {};
       formFields.forEach(field => {
         const inputField = document.getElementById(field);
         formData[field] = inputField.value;
       });
 
-      // Perform validation or further processing as needed
-      // For example, you can send the form data to a server using AJAX
-
-      // Cache the user details in localStorage
       cacheUserDetails(formData);
-
-      // Clear the form after submission (optional)
       appointmentForm.reset();
     });
 
-    // Autofill the form with cached user details
     function autofillForm(userDetails) {
       formFields.forEach(field => {
         const inputField = document.getElementById(field);
@@ -264,18 +177,15 @@
       });
     }
 
-    // Cache the user details in localStorage
     function cacheUserDetails(userDetails) {
       localStorage.setItem('userDetails', JSON.stringify(userDetails));
     }
 
-    // Check if there are cached user details and autofill the form
     const cachedUserDetails = localStorage.getItem('userDetails');
     if (cachedUserDetails) {
       autofillForm(JSON.parse(cachedUserDetails));
     }
 
-    // Toggle dark mode
     function toggleDarkMode() {
       const body = document.body;
       const darkModeToggle = document.getElementById('dark-mode-toggle');
@@ -289,7 +199,6 @@
       }
     }
 
-    // Enable dark mode
     function enableDarkMode() {
       const body = document.body;
       const darkModeToggle = document.getElementById('dark-mode-toggle');
@@ -298,7 +207,6 @@
       darkModeToggle.innerText = 'Light Mode';
     }
 
-    // Disable dark mode
     function disableDarkMode() {
       const body = document.body;
       const darkModeToggle = document.getElementById('dark-mode-toggle');
@@ -307,54 +215,17 @@
       darkModeToggle.innerText = 'Dark Mode';
     }
 
-    // Select a service
-    function selectService(service) {
+    function selectService(service, price) {
       const selectedServiceInput = document.getElementById('selected-service');
       selectedServiceInput.value = service;
-
       const serviceButtons = document.querySelectorAll('.service-button');
       serviceButtons.forEach(button => {
         button.classList.remove('selected');
-        if (button.innerText === service) {
+        if (button.innerText.includes(service)) {
           button.classList.add('selected');
         }
       });
     }
   </script>
-
-    <!-- Stripe stuff-->
-  <script src="https://js.stripe.com/v3/"></script>
-  <script>
-    var stripe = Stripe('YOUR_STRIPE_PUBLIC_KEY');
-    var elements = stripe.elements();
-    var card = elements.create('card');
-
-    card.mount('#card-element');
-
-    var form = document.getElementById('appointment-form');
-    form.addEventListener('submit', function(event) {
-      event.preventDefault();
-      stripe.createToken(card).then(function(result) {
-        if (result.error) {
-          // Display error message to the user
-          var errorElement = document.getElementById('card-errors');
-          errorElement.textContent = result.error.message;
-        } else {
-          // Send the token to your server
-          stripeTokenHandler(result.token);
-        }
-      });
-    });
-
-    function stripeTokenHandler(token) {
-      // Add the token to a hidden input field
-      var hiddenInput = document.createElement('input');
-      hiddenInput.setAttribute('type', 'hidden');
-      hiddenInput.setAttribute('name', 'stripeToken');
-      hiddenInput.setAttribute('value', token.id);
-      form.appendChild(hiddenInput);
-
-      // Submit the form
-      form.submit();
-    }
-  </script>
+</body>
+</html>
