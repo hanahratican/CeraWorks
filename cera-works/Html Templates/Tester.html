@@ -28,31 +28,77 @@
       z-index: -1;
     }
 
+    .logo-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: scale(2);
+    }
+
     /* Main content styles */
     main {
       margin-top: 100vh;
       padding: 40px;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       min-height: 100vh;
       background: linear-gradient(135deg, #1a1a1a, #222);
     }
 
     .service-cards {
-        max-height: 650px;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 550px);
+      grid-template-rows: auto;
       gap: 20px;
     }
 
     .service-card {
+      position: relative; /* Add position relative for the drop shadow */
+      width: 350px;
+      height: 350px;
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.8);
       border-radius: 4px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(5px);
+      overflow: hidden; /* Add overflow hidden to contain the logo */
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      background-color: rgba(255, 165, 0, 0); /* Change the alpha value to 0 to make it transparent */
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    .service-card img.logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 60px; /* Adjust the width and height of the logo as needed */
+      height: 60px;
+      z-index: 1;
     }
 
     h2 {
@@ -126,7 +172,11 @@
 </head>
 <body>
 
-  <div class="banner"></div>
+  <div class="banner">
+    <div class="logo-container">
+      <img src="path/to/logo.png" alt="Logo">
+    </div>
+  </div>
   <main>
     <div class="service-cards">
       <div class="service-card">
@@ -183,7 +233,6 @@
         <button type="submit">Schedule</button>
       </form>
     </div>
-    
   </main>
 
   <script>
