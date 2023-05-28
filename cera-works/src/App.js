@@ -4,6 +4,7 @@ import NavTabs from './components/NavTabs';
 import { Login } from './components/auth/Login';
 // import { Signup } from './components/auth/Signup';
 import AuthDetails from './components/AuthDetails';
+import Reviews from './components/pages/Reviews';
 import './App.css';
 
 function App() {
@@ -15,9 +16,9 @@ function App() {
     }
     if (currentPage === 'Reviews') {
       return <Reviews />;
-    }
-    if (currentPage === 'Services') {
-      return <Services />;
+    // }
+    // if (currentPage === 'Services') {
+    //   return <Services />;
     }
     return <Home />;
   };
@@ -30,6 +31,7 @@ function App() {
       <NavTabs currentPage={currentPage} handlePageChange={handlePageChange}/>
       <AuthDetails />
       {renderPage()}
+      <Reviews />
 
     </div>
   );
