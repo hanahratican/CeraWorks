@@ -3,7 +3,7 @@ import {FaBars, FaTimes} from 'react-icons/fa'
 import Logo from '../assets/logo.png'
 
 
-const NavTabs = () => {
+const NavTabs = ({ handlePageChange }) => {
 
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
@@ -16,8 +16,8 @@ const NavTabs = () => {
       
       {/* Navbar */}
         <ul className='hidden md:flex'>
-          <li>Home</li>
-          <li>Login</li>
+          <li href="#home" onClick={() => handlePageChange('Home')}>Home</li>
+          <li href="/auth/login" onClick={() => handlePageChange('Login')}>Login</li>
           <li>Services</li>
           <li>Reviews</li>
           <li>Contact</li>
