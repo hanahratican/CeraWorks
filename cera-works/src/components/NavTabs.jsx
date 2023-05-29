@@ -19,7 +19,7 @@ const NavTabs = ({ handlePageChange }) => {
           <li href="#home" onClick={() => handlePageChange('Home')}>Home</li>
           <li href="/auth/login" onClick={() => handlePageChange('Login')}>Login</li>
           <li>Services</li>
-          <li>Reviews</li>
+          <li href="/reviews" onClick={() => handlePageChange('Reviews')}>Reviews</li>
           <li>Contact</li>
         </ul>
 

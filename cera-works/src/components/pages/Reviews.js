@@ -21,6 +21,7 @@ export default function Reviews() {
 
     const styles = {
         container: {
+            paddingTop: '20vh',
             display: "flex",
             flexDirection: "column",
             alignItems: "center"

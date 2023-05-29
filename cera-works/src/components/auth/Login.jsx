@@ -27,6 +27,7 @@ export const Login = (props) => {
             justifyContent: 'center',
             height: '60vh',
             marginBottom: '30px',
+            paddingTop: '20vh'
         },
         boxes: {
             border: '1px solid black',

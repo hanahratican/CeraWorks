@@ -31,7 +31,6 @@ function App() {
       <NavTabs currentPage={currentPage} handlePageChange={handlePageChange}/>
       <AuthDetails />
       {renderPage()}
-      <Reviews />
 
     </div>
   );
