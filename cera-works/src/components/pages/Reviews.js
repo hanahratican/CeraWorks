@@ -44,6 +44,13 @@ export default function Reviews() {
             display: "flex",
             flexDirection: "row",
         },
+        name: {
+            border: "1px solid #a9a9a9",
+            borderRadius: 5,
+            width: 300,
+            margin: "10px 0",
+            padding: 5
+        }
     };
 
     return (
@@ -70,6 +77,7 @@ export default function Reviews() {
         placeholder='Please leave a review'
         style={styles.textarea}
         />
+        <input placeholder='Name' style={styles.name} />
         <button style={styles.button}>Submit</button>
       </div>
     );

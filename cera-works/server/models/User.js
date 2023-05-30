@@ -1,3 +1,4 @@
+// Dont know if we need this...
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
