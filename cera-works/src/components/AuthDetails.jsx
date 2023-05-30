@@ -2,6 +2,21 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import { auth } from "../firebase";
 
+const styles = {
+  welcomeText: {
+      position: 'fixed',
+      right: '30px',
+      justifyContent: 'center',
+      paddingRight: '10px',
+      paddingLeft: '10px',
+      marginTop: '80px',
+      backgroundColor: '#d4d4d4',
+  },
+  button: {
+    color: '#F38442',
+  }
+};
+
 const AuthDetails = () => {
   const [authUser, setAuthUser] = useState(null);
 
@@ -22,17 +37,18 @@ const AuthDetails = () => {
   const userSignOut = () => {
     signOut(auth)
       .then(() => {
-        console.log("sign out successful");
+        console.log("Sign out successful");
       })
       .catch((error) => console.log(error));
   };
 
   return (
-    <div>
+    <div style={styles.welcomeText}>
       {authUser ? (
         <>
-          <p>{`Signed In as ${authUser.email}`}</p>
-          <button onClick={userSignOut}>Sign Out</button>
+          <p>{`Welcome, ${authUser.email}!  `}
+          <button style={styles.button} onClick={userSignOut}>Sign Out</button>
+          </p>
         </>
       ) : (
         <p>Signed Out</p>
