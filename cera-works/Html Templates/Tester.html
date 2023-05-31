@@ -28,31 +28,76 @@
       z-index: -1;
     }
 
+    .logo-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      border-radius: 4px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .logo-container img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
     /* Main content styles */
     main {
       margin-top: 100vh;
       padding: 40px;
-      display: grid;
-      grid-template-columns: 1fr 400px;
-      gap: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       min-height: 100vh;
       background: linear-gradient(135deg, #1a1a1a, #222);
     }
 
     .service-cards {
-        max-height: 650px;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      grid-template-rows: repeat(2, 1fr);
       gap: 20px;
     }
 
     .service-card {
+      position: relative;
+      width: 350px;
+      height: 350px;
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.8);
       border-radius: 4px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(5px);
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: calc(100% - 20px);
+      height: calc(100% - 20px);
+      background-color: rgba(255, 165, 0, 0);
+      filter: blur(10px);
+      z-index: -1;
+    }
+
+    .service-card img.logo {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 60px;
+      height: 60px;
+      z-index: 1;
     }
 
     h2 {
@@ -115,6 +160,37 @@
       font-weight: bold;
     }
 
+    /* Media Query for stacking service cards and scheduling box */
+    @media (max-width: 768px) {
+      .service-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-card {
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .service-card {
+        width: 100%;
+      }
+    }
+
+    /* Media Query for desktop layout */
+    @media (min-width: 769px) {
+      main {
+        flex-direction: row;
+      }
+
+      .service-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .schedule-card {
+        margin-left: 20px;
+      }
+    }
+
     /* Footer styles */
     footer {
       text-align: center;
@@ -126,7 +202,11 @@
 </head>
 <body>
 
-  <div class="banner"></div>
+  <div class="banner">
+    <div class="logo-container">
+      <img src="/src/assets/logo.png" alt="Logo">
+    </div>
+  </div>
   <main>
     <div class="service-cards">
       <div class="service-card">
@@ -170,58 +250,13 @@
         <label for="time">Time:</label>
         <input type="time" id="time" required>
 
-        <label for="service">Service:</label>
-        <div class="service-buttons">
-          <button type="button" class="service-button selected" onclick="selectService('Basic Detailing', '$50')">Basic Detailing<br><span class="service-price">$50</span></button>
-          <button type="button" class="service-button" onclick="selectService('Interior Detailing', '$80')">Interior Detailing<br><span class="service-price">$80</span></button>
-          <button type="button" class="service-button" onclick="selectService('Exterior Detailing', '$70')">Exterior Detailing<br><span class="service-price">$70</span></button>
-          <button type="button" class="service-button" onclick="selectService('Full Detailing', '$120')">Full Detailing<br><span class="service-price">$120</span></button>
-        </div>
-
-        <input type="hidden" id="selected-service" required>
-
-        <button type="submit">Schedule</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
-    
   </main>
+  <footer>
+    <p>&copy; 2023 CeraWorks. All rights reserved.</p>
+  </footer>
 
-  <script>
-    const appointmentForm = document.getElementById('appointment-form');
-    const formFields = ['name', 'email', 'phone', 'address', 'make-model', 'date', 'time'];
-
-    appointmentForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const formData = {};
-      formFields.forEach(field => {
-        const inputField = document.getElementById(field);
-        formData[field] = inputField.value;
-      });
-
-      cacheUserDetails(formData);
-      appointmentForm.reset();
-    });
-
-    function cacheUserDetails(userDetails) {
-      localStorage.setItem('userDetails', JSON.stringify(userDetails));
-    }
-
-    const cachedUserDetails = localStorage.getItem('userDetails');
-    if (cachedUserDetails) {
-      autofillForm(JSON.parse(cachedUserDetails));
-    }
-
-    function selectService(service, price) {
-      const selectedServiceInput = document.getElementById('selected-service');
-      selectedServiceInput.value = service;
-      const serviceButtons = document.querySelectorAll('.service-button');
-      serviceButtons.forEach(button => {
-        button.classList.remove('selected');
-        if (button.innerText.includes(service)) {
-          button.classList.add('selected');
-        }
-      });
-    }
-  </script>
 </body>
 </html>
