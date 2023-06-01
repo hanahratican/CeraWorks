@@ -70,7 +70,7 @@
     .service-card {
       position: relative;
       width: 350px;
-      height: 350px;
+      height: 500px; /* Increased height */
       padding: 20px;
       background-color: rgba(255, 255, 255, 0.8);
       border-radius: 4px;
@@ -168,7 +168,9 @@
 
       .schedule-card {
         margin-top: 20px;
-        width: 100%;
+        width: 80%;
+        max-width: 400px;
+        height: auto;
       }
 
       .service-card {
@@ -187,7 +189,10 @@
       }
 
       .schedule-card {
-        margin-left: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 400px;
+        height: 650px;
       }
     }
 
@@ -199,33 +204,22 @@
       padding: 10px;
     }
   </style>
+  <script>
+    // Parallax effect on banner image
+    window.addEventListener("scroll", function() {
+      var scrollPosition = window.pageYOffset;
+      var parallaxElement = document.querySelector(".banner");
+      parallaxElement.style.backgroundPositionY = -scrollPosition * 0.5 + "px";
+    });
+  </script>
 </head>
 <body>
 
-  <div class="banner">
-    <div class="logo-container">
-      <img src="/src/assets/logo.png" alt="Logo">
-    </div>
+  <div class="banner"></div>
+  <div class="logo-container">
+    <img src="/src/assets/logo.png" alt="Logo">
   </div>
   <main>
-    <div class="service-cards">
-      <div class="service-card">
-        <h2>Service 1</h2>
-        <!-- Add content for Service 1 -->
-      </div>
-      <div class="service-card">
-        <h2>Service 2</h2>
-        <!-- Add content for Service 2 -->
-      </div>
-      <div class="service-card">
-        <h2>Service 3</h2>
-        <!-- Add content for Service 3 -->
-      </div>
-      <div class="service-card">
-        <h2>Service 4</h2>
-        <!-- Add content for Service 4 -->
-      </div>
-    </div>
     <div class="schedule-card">
       <h2>Schedule an Appointment</h2>
       <form id="appointment-form">
