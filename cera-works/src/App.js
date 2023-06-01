@@ -6,6 +6,7 @@ import { Login } from './components/auth/Login';
 import AuthDetails from './components/AuthDetails';
 import Reviews from './components/pages/Reviews';
 import './App.css';
+import Services from './components/Services';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('About');
@@ -20,7 +21,12 @@ function App() {
     // if (currentPage === 'Services') {
     //   return <Services />;
     }
-    return <Home />;
+    return <div>
+      <NavTabs />
+      <Home />
+      <Services />
+      </div>
+    ;
   };
 
   const handlePageChange = (page) => setCurrentPage(page);
