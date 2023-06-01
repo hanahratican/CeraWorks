@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import { GetformProvider, useGetform } from '@getform/react-getform';
 
-const formEndpoint = 'https://api.getform.io/your-form-endpoint';
+const formEndpoint = 'https://getform.io/f/d454ae62-76a9-4d1d-9356-ab1878f88873';
 
-const App = () => {
   const [selectedService, setSelectedService] = useState('Basic Detailing');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
