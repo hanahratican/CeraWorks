@@ -10,40 +10,40 @@ export const ADD_REVIEW = gql`
         }
     }
 `;
-
-export const CREATE_SCHEDULE = gql`
-    mutation createSchedule(
-        $name: String!
-        $email: String!
-        $phone: String!
-        $date: String!
-        $time: String!
-        $address: String!
-        $car: String!
-        $service: String!
-    ) {
-        createSchedule(
-            name: $name
-            email: $email
-            phone: $phone
-            date: $date
-            time: $time
-            address: $address
-            car: $car
-            service: $service
-        ) {
-            _id
-            name
-            email
-            phone
-            date
-            time
-            address
-            car
-            service
-        }
-    }
-`;
+// NOT NEEDED
+// export const CREATE_SCHEDULE = gql`
+//     mutation createSchedule(
+//         $name: String!
+//         $email: String!
+//         $phone: String!
+//         $date: String!
+//         $time: String!
+//         $address: String!
+//         $car: String!
+//         $service: String!
+//     ) {
+//         createSchedule(
+//             name: $name
+//             email: $email
+//             phone: $phone
+//             date: $date
+//             time: $time
+//             address: $address
+//             car: $car
+//             service: $service
+//         ) {
+//             _id
+//             name
+//             email
+//             phone
+//             date
+//             time
+//             address
+//             car
+//             service
+//         }
+//     }
+// `;
 
 export const CREATE_USER = gql`
     mutation createUser($email: String!, $password: String!) {

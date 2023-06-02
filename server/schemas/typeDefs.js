@@ -10,7 +10,7 @@ const typeDefs = gql`
     type Review {
         _id: ID!
         name: String!
-        rating: Int!
+        rating: Number!
         comment: String!
     }
 
