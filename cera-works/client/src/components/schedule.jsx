@@ -146,6 +146,5 @@ const formEndpoint = 'https://getform.io/f/d454ae62-76a9-4d1d-9356-ab1878f88873'
       </>
     </GetformProvider>
   );
-};
 
 export default App;
