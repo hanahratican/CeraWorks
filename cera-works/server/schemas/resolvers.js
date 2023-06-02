@@ -17,7 +17,7 @@ const resolvers = {
             return Review.create({ name, rating, comment });
         },
         createSchedule: async (parent, { name, date, time, location, description }) => {
-            return Schedule.create({ name, date, time, location, description });
+            return await Schedule.create({ name, date, time, location, description });
         },
         createUser: async (parent, { email, password }) => {
             return User.create({ email, password });
