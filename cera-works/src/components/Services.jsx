@@ -48,12 +48,12 @@ const Services = () => {
                 <div className='bg-neutral-200 text-zinc-800 shadow-md shadow-[#040c16] hover:scale-110 duration-500 rounded'>
                     <div className='font-bold text-xl mb-2 text-center py-3'>Additional Services</div>
                     <ul className='max-w-md space-y-1 list-disc list-inside py-1'>                        
-                        <li>Interior Ceramic application on Leather <span className='text-[#F38442] font-bold'>$350</span></li>
-                        <li>Hand wash, clay bar treatment, and prep of the vehicle's exterior.</li>
-                        <li>Application of ceramic coating to painted surfaces, wheels, and trim. </li>
-                        <li>Extensive paint correction to remove swirl marks, scratches, and imperfections.</li>
-                        <li>Glass coating for improved visibility and water repellency. </li>
-                        <li>Duration: Up to 5 years of protection.</li>
+                        <li>Interior Ceramic application on Leather. <span className='text-[#F38442] font-bold'>$350</span></li>
+                        <li>Wheel Coating: <span className='text-[#F38442] font-bold'>$100</span> per wheel.</li>
+                        <li>Headlight Restoration: <span className='text-[#F38442] font-bold'>$75</span> </li>
+                        <li>Paint Correction (Two stage polish): <span className='text-[#F38442] font-bold'>$485</span> Small Car</li>
+                        <li>Paint Correction (Two stage polish): <span className='text-[#F38442] font-bold'>$685</span> Large Car / Trucks / SUV's </li>
+                        <li>Glass Coating: <span className='text-[#F38442] font-bold'>$50</span> per glass. <span className='text-[#F38442] font-bold'>$85</span> windshield.</li>
                     </ul>
                 </div>
             </div>
