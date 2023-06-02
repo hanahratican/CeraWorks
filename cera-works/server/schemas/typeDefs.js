@@ -26,6 +26,10 @@ const typeDefs = gql`
         message: String
     }
 
+    type Auth {
+        token: ID!
+        user: User
+      }
 
     type Query {
         reviews: [Review]

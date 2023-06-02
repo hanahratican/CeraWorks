@@ -27,11 +27,17 @@ const typeDefs = gql`
     service: String!
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     reviews: [Review]
     schedules: [Schedule]
     user(_id: ID!): User
   }
+  
 
   type Mutation {
     addReview(name: String!, rating: Int!, comment: String!): Review

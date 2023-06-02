@@ -1,6 +1,6 @@
 const User = require('../models/User');
-const Review  = require('./models/Review');
-const Schedule = require('./models/Schedule');
+const Review  = require('../models/Review');
+const Schedule = require('../models/Schedule');
 
 const resolvers = {
     Query: {
