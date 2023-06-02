@@ -23,7 +23,6 @@ const typeDefs = gql`
         time: String!
         car: String!
         service: String!
-        message: String
     }
 
     type Auth {
@@ -39,7 +38,7 @@ const typeDefs = gql`
 
     type Mutation {
         addReview(name: String!, rating: Int!, comment: String!): Review
-        createSchedule(name: String!, email: String!, phone: String!, date: String!, time: String!, car: String!, service: String!, message: String): Schedule
+        createSchedule(name: String!, email: String!, phone: String!, date: String!, time: String!, car: String!, service: String!): Schedule
         createUser(email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         updateUser(_id: ID!, email: String!, password: String!): User

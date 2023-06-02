@@ -15,8 +15,7 @@ export const QUERY_SCHEDULES = gql`
     query schedules {
         schedules {
             _id
-            firstName
-            lastName
+            name
             email
             phone
             date
@@ -27,3 +26,15 @@ export const QUERY_SCHEDULES = gql`
         }
     }
 `;
+
+export const QUERY_USER = gql`
+    query user($email: String!) {
+        user(email: $email) {
+            _id
+            email
+            password
+        }
+    }
+`;
+
+

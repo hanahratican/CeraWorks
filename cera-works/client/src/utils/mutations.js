@@ -13,8 +13,7 @@ export const ADD_REVIEW = gql`
 
 export const CREATE_SCHEDULE = gql`
     mutation createSchedule(
-        $firstName: String!
-        $lastName: String!
+        $name: String!
         $email: String!
         $phone: String!
         $date: String!
@@ -24,8 +23,7 @@ export const CREATE_SCHEDULE = gql`
         $service: String!
     ) {
         createSchedule(
-            firstName: $firstName
-            lastName: $lastName
+            name: $name
             email: $email
             phone: $phone
             date: $date
@@ -35,8 +33,7 @@ export const CREATE_SCHEDULE = gql`
             service: $service
         ) {
             _id
-            firstName
-            lastName
+            name
             email
             phone
             date
@@ -44,6 +41,48 @@ export const CREATE_SCHEDULE = gql`
             address
             car
             service
+        }
+    }
+`;
+
+export const CREATE_USER = gql`
+    mutation createUser($email: String!, $password: String!) {
+        createUser(email: $email, password: $password) {
+            token
+            user {
+                _id
+                email
+            }
+        }
+    }
+`;
+
+export const LOGIN_USER = gql`
+    mutation login($email: String!, $password: String!) {
+        login(email: $email, password: $password) {
+            token
+            user {
+                _id
+                email
+            }
+        }
+    }
+`;
+
+export const UPDATE_USER = gql`
+    mutation updateUser($email: String!, $password: String!) {
+        updateUser(email: $email, password: $password) {
+            _id
+            email
+        }
+    }
+`;
+
+export const REMOVE_USER = gql`
+    mutation removeUser($email: String!, $password: String!) {
+        removeUser(email: $email, password: $password) {
+            _id
+            email
         }
     }
 `;
