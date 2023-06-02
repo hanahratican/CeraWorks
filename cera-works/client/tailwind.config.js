@@ -7,9 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         proxima: ["Proxima Nova"]
-      }
     },
   },
   plugins: [],
-}
-
+}}
