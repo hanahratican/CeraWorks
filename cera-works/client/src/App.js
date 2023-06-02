@@ -7,6 +7,14 @@ import AuthDetails from './components/AuthDetails';
 import Reviews from './components/pages/Reviews';
 import './App.css';
 import Services from './components/Services';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+
+const client = new ApolloClient({
+  uri: '/graphql',
+  cache: new InMemoryCache(),
+});
+
 
 function App() {
   const [currentPage, setCurrentPage] = useState('About');
@@ -32,6 +40,7 @@ function App() {
   const handlePageChange = (page) => setCurrentPage(page);
   
   return (
+    <ApolloProvider client={client}>
     <div>
       
       <NavTabs currentPage={currentPage} handlePageChange={handlePageChange}/>
@@ -39,6 +48,7 @@ function App() {
       {renderPage()}
 
     </div>
+    </ApolloProvider>
   );
 }
 
