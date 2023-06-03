@@ -9,8 +9,8 @@ const resolvers = {
         user: async (_, { _id }) => User.findById({ _id }),
     },
     Mutation: {
-        addReview: async (parent, { name, rating, comment }) => {
-            return Review.create({ name, rating, comment });
+        addReview: async (parent, { name, comment }) => {
+            return Review.create({ name, comment });
         },
         createUser: async (parent, { email, password }) => {
             return User.create({ email, password });

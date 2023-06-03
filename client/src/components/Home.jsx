@@ -1,6 +1,15 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
+import ReviewsForm from './pages/ReviewsForm';
+import ReviewsList from './pages/ReviewsList';
+import Services from './Services';
+
+import { QUERY_REVIEWS } from '../utils/queries';
 
 const Home = () => {
+  const { loading, data } = useQuery(QUERY_REVIEWS);
+  const reviews = data?.reviews || [];
+
   return (
     <div name='home' className='w-full h-screen bg-neutral-200'>
 
@@ -13,6 +22,18 @@ const Home = () => {
             With our mobile service we will travel to your place of work or residence to detail your vehicle with ease. We provide many different services with affordable prices! </p>
           <div>
           </div>
+        </div>
+        <Services />
+        <ReviewsForm />
+        <div className="col-12 col-md-8 mb-3">
+          {loading ? (
+            <div>Loading...</div>
+          ) : (
+            <ReviewsList
+              reviews={reviews}
+              title="Some Feed for Thought(s)..."
+            />
+          )}
         </div>
     </div>
   );

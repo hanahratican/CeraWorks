@@ -10,7 +10,6 @@ const typeDefs = gql`
     type Review {
         _id: ID!
         name: String!
-        rating: Number!
         comment: String!
     }
 
@@ -21,7 +20,6 @@ const typeDefs = gql`
 
     type Query {
         reviews: [Review]
-        schedules: [Schedule]
         user(_id: ID!): User
     }
 

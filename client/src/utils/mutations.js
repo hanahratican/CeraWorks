@@ -1,11 +1,10 @@
 import { gql } from '@apollo/client';
 
 export const ADD_REVIEW = gql`
-    mutation addReview($name: String!, $rating: Int!, $comment: String!) {
-        addReview(name: $name, rating: $rating, comment: $comment) {
+    mutation addReview($name: String!, $comment: String!) {
+        addReview(name: $name, comment: $comment) {
             _id
             name
-            rating
             comment
         }
     }

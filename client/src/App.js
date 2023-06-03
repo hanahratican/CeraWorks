@@ -4,7 +4,7 @@ import NavTabs from './components/NavTabs';
 import { Login } from './components/auth/Login';
 // import { Signup } from './components/auth/Signup';
 import AuthDetails from './components/AuthDetails';
-import Reviews from './components/pages/Reviews';
+import ReviewsForm from './components/pages/ReviewsForm';
 import './App.css';
 import Services from './components/Services';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
@@ -24,7 +24,7 @@ function App() {
       return <Login />;
     }
     if (currentPage === 'Reviews') {
-      return <Reviews />;
+      return <ReviewsForm />;
     // }
     // if (currentPage === 'Services') {
     //   return <Services />;
@@ -32,7 +32,7 @@ function App() {
     return <div>
       <NavTabs />
       <Home />
-      <Services />
+      {/* <Services /> */}
       </div>
     ;
   };
