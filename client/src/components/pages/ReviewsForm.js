@@ -41,8 +41,8 @@ const ReviewsForm = () => {
   };
 
   return (
-    <div>
-      <h3>Feel free to leave a review!</h3>
+    <div className='text-center'>
+      <h3 className='text-[#F38442] text-lg font-bold'>Feel free to leave a review!</h3>
 
       <p
         className={`m-0 ${
@@ -53,30 +53,30 @@ const ReviewsForm = () => {
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
       <form
-        className="flex-row justify-center justify-space-between-md align-center"
+        className="w-full flex-row justify-center justify-space-between-md align-center"
         onSubmit={handleFormSubmit}
       >
-        <div className="col-12">
+        <div className="py-3 px-3">
           <textarea
             name="comment"
             placeholder="Leave a review here..."
             value={formState.comment}
-            className="form-input w-100"
+            className="form-input w-10/12"
             onChange={handleChange}
           ></textarea>
         </div>
-        <div className="col-12 col-lg-9">
+        <div className="col-12 col-lg-9 py-3 px-3">
           <input
             name="name"
             placeholder="Add your name here..."
             value={formState.name}
-            className="form-input w-100"
+            className="form-input w-6/12 py-3 px-3"
             onChange={handleChange}
           />
         </div>
 
-        <div className="col-12 col-lg-3">
-          <button className="btn btn-primary btn-block py-3" type="submit">
+        <div className="col-12 col-lg-3 py-3 px-3">
+          <button className="btn btn-primary btn-block py-3 px-3 rounded-full bg-[#F38442]" type="submit">
             Add Review
           </button>
         </div>
