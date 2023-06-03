@@ -4,7 +4,7 @@ import ReviewsList from './pages/ReviewsList'
 
 const Reviews = () => {
   return (
-    <div name='services' className='w-full h-full bg-neutral text-zinc-950 bg-neutral-200'>
+    <div name='reviews' className='w-full h-full bg-neutral text-zinc-950 bg-neutral-200'>
         
         {/* Container */}
         <div className='max-w-[1000px] mx-auto p-3 flex flex-col justify-center w-full h-full'>
