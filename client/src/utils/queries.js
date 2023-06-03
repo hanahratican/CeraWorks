@@ -5,7 +5,6 @@ export const QUERY_REVIEWS = gql`
         reviews {
             _id
             name
-            rating
             comment
         }
     }

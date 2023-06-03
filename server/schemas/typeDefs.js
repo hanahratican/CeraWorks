@@ -20,7 +20,6 @@ const typeDefs = gql`
 
     type Query {
         reviews: [Review]
-        schedules: [Schedule]
         user(_id: ID!): User
     }
 
