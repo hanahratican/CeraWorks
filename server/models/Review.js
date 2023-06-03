@@ -6,10 +6,6 @@ const reviewSchema = new Schema({
         required: [true, 'Please enter a name'],
         unique: true,
     },
-    rating: {
-        type: Number,
-        required: [true, 'Please enter a rating'],
-    },
     comment: {
         type: String,
         required: [true, 'Please enter a comment'],
