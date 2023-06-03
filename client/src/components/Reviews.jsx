@@ -1,8 +1,11 @@
 import React from 'react'
 import ReviewsForm from './pages/ReviewsForm'
-import ReviewsList from './pages/ReviewsList'
+// import ReviewsList from './pages/ReviewsList'
+// import { QUERY_REVIEWS } from '../utils/queries';
 
 const Reviews = () => {
+    // const { loading, data } = useQuery(QUERY_REVIEWS);
+    // const reviews = data?.reviews || [];
   return (
     <div name='reviews' className='w-full h-full bg-neutral text-zinc-950 bg-neutral-200'>
         
@@ -54,6 +57,9 @@ const Reviews = () => {
                     Pellentesque euismod nisi in diam luctus, in faucibus leo interdum. Nunc at vulputate mauris. Nulla lobortis metus enim, ut tincidunt magna vulputate ut. 
                     Maecenas rutrum imperdiet molestie. Sed viverra eu metus posuere fringilla. Integer tellus ligula, semper ut arcu eget, bibendum sollicitudin orci.
                     </p>
+                </div>
+                <div className='bg-zinc-800 text-neutral-200 shadow-md shadow-[#040c16] duration-500 rounded xl:col-span-2'>
+                <ReviewsForm />
                 </div>
             </div>
         </div>
