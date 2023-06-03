@@ -1,12 +1,18 @@
 [
-{
-    "name": "Hanah",
-    "rating": "10",
-    "comment": "Misa did such an amazing job with the ceramic coating!"
-},
-{
-    "name": "Jenny",
-    "rating": "10",
-    "comment": "Misa did such an amazing job with the ceramic coating!"
-}
+    {
+        "name": "Hanah",
+        "comment": "Misa did such an amazing job with the ceramic coating!"
+    },
+    {
+        "name": "Eli",
+        "comment": "My truck has never looked so good!"
+    },
+    {
+        "name": "Ruben",
+        "comment": "My 1987 Honda CRX SI looks brand new!"
+    },
+    {
+        "name": "Ryan",
+        "comment": "I'll definitely be scheduling again!"
+    }
 ]
