@@ -1,33 +1,44 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+
 import { ADD_REVIEW } from '../../utils/mutations';
 
-function MyForm() {
-    const [name, setName] = useState('');
-    const [comment, setComment] = useState('');
-  
-    const [addReview, { loading, error }] = useMutation(ADD_REVIEW);
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-  
-      if (!name || !comment) {
-        console.log('Name and comment fields are required');
-        return;
-      }
-  
-      console.log('Name:', name);
-      console.log('Comment:', comment);
-  
-      addReview({ variables: { name, comment } })
-        .then(() => {
-          // Review added successfully
-          // Handle any additional logic or UI updates
-        })
-        .catch((error) => {
-          console.error('Error submitting form:', error);
-        });
-    };
+const ReviewsForm = () => {
+  const [formState, setFormState] = useState({
+    name: '',
+    comment: '',
+  });
+  const [characterCount, setCharacterCount] = useState(0);
+
+  // Set up our mutation with an option to handle errors
+  const [addReview, { error }] = useMutation(ADD_REVIEW);
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    // On form submit, perform mutation and pass in form data object as arguments
+    // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
+    try {
+      const { data } = addReview({
+        variables: { ...formState },
+      });
+
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    if (name === 'comment' && value.length <= 280) {
+      setFormState({ ...formState, [name]: value });
+      setCharacterCount(value.length);
+    } else if (name !== 'comment') {
+      setFormState({ ...formState, [name]: value });
+    }
+  };
 
   return (
     <div className='text-center'>
@@ -77,105 +88,9 @@ function MyForm() {
       </form>
     </div>
   );
-}
+};
 
-export default MyForm;
-
-
-
-// import React, { useState } from 'react';
-// import { useMutation } from '@apollo/client';
-
-// import { ADD_REVIEW } from '../../utils/mutations';
-
-// const ReviewsForm = () => {
-//   const [formState, setFormState] = useState({
-//     name: '',
-//     comment: '',
-//   });
-//   const [characterCount, setCharacterCount] = useState(0);
-
-//   // Set up our mutation with an option to handle errors
-//   const [addReview, { error }] = useMutation(ADD_REVIEW);
-
-//   const handleFormSubmit = async (event) => {
-//     event.preventDefault();
-
-//     // On form submit, perform mutation and pass in form data object as arguments
-//     // It is important that the object fields are match the defined parameters in `ADD_THOUGHT` mutation
-//     try {
-//       const { data } = addReview({
-//         variables: { ...formState },
-//       });
-
-//       window.location.reload();
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
-
-//     if (name === 'comment' && value.length <= 280) {
-//       setFormState({ ...formState, [name]: value });
-//       setCharacterCount(value.length);
-//     } else if (name !== 'comment') {
-//       setFormState({ ...formState, [name]: value });
-//     }
-//   };
-
-//   return (
-//     <div>
-//       <h3>Feel free to leave a review!</h3>
-
-//       <p
-//         className={`m-0 ${
-//           characterCount === 280 || error ? 'text-danger' : ''
-//         }`}
-//       >
-//         Character Count: {characterCount}/280
-//         {error && <span className="ml-2">Something went wrong...</span>}
-//       </p>
-//       <form
-//         className="flex-row justify-center justify-space-between-md align-center"
-//         onSubmit={handleFormSubmit}
-//       >
-//         <div className="col-12">
-//           <textarea
-//             name="comment"
-//             placeholder="Leave a review here..."
-//             value={formState.comment}
-//             className="form-input w-100"
-//             onChange={handleChange}
-//           ></textarea>
-//         </div>
-//         <div className="col-12 col-lg-9">
-//           <input
-//             name="name"
-//             placeholder="Add your name here..."
-//             value={formState.name}
-//             className="form-input w-100"
-//             onChange={handleChange}
-//           />
-//         </div>
-
-//         <div className="col-12 col-lg-3">
-//           <button className="btn btn-primary btn-block py-3" type="submit">
-//             Add Review
-//           </button>
-//         </div>
-//         {error && (
-//           <div className="col-12 my-3 bg-danger text-white p-3">
-//             Something went wrong...
-//           </div>
-//         )}
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default ReviewsForm;
+export default ReviewsForm;
 
 
 
