@@ -14,17 +14,6 @@ const typeDefs = gql`
         comment: String!
     }
 
-    type Schedule {
-        _id: ID!
-        name: String!
-        email: String!
-        phone: String!
-        date: String!
-        time: String!
-        car: String!
-        service: String!
-    }
-
     type Auth {
         token: ID!
         user: User
@@ -38,7 +27,6 @@ const typeDefs = gql`
 
     type Mutation {
         addReview(name: String!, rating: Int!, comment: String!): Review
-        createSchedule(name: String!, email: String!, phone: String!, date: String!, time: String!, car: String!, service: String!): Schedule
         createUser(email: String!, password: String!): Auth
         login(email: String!, password: String!): Auth
         updateUser(_id: ID!, email: String!, password: String!): User

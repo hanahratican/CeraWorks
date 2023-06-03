@@ -1,23 +1,16 @@
 const User = require('../models/User');
 const Review  = require('../models/Review');
-const Schedule = require('../models/Schedule');
 
 const resolvers = {
     Query: {
         reviews: async () => {
             return Review.find();
         },
-        schedules: async () => {
-            return Schedule.find();
-        },
         user: async (_, { _id }) => User.findById({ _id }),
     },
     Mutation: {
         addReview: async (parent, { name, rating, comment }) => {
             return Review.create({ name, rating, comment });
-        },
-        createSchedule: async (parent, { name, date, time, location, description }) => {
-            return await Schedule.create({ name, date, time, location, description });
         },
         createUser: async (parent, { email, password }) => {
             return User.create({ email, password });
