@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 // import { GetformProvider, useGetform } from '@getform/react-getform';
 import { useForm } from 'react-hook-form';
+import Schedule from './pages/Schedule';
 
 const formEndpoint = 'https://getform.io/f/d454ae62-76a9-4d1d-9356-ab1878f88873';
 
@@ -45,7 +46,7 @@ const App = () => {
     //   .catch((error) => console.error('Form submission failed:', error));
     fetch(formEndpoint, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(initialFormState),
     })
       .then((response) => {
         if (response.ok) {
@@ -61,7 +62,7 @@ const App = () => {
   };
 
   return (
-    <GetformProvider formEndpoint={formEndpoint}>
+    <>
       <div className="banner"></div>
       <div className="logo-container">
         <img src="../src/" alt="Logo" />
@@ -105,8 +106,8 @@ const App = () => {
       <footer>
         <p>&copy; 2023 CeraWorks. All rights reserved.</p>
       </footer>
-    </GetformProvider>
+    </>
   );
 };
 
-export default Schedule;
+export default App;
