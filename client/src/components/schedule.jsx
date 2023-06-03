@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { GetformProvider, useGetform } from '@getform/react-getform';
+// import { GetformProvider, useGetform } from '@getform/react-getform';
+import { useForm } from 'react-hook-form';
 
 const formEndpoint = 'https://getform.io/f/d454ae62-76a9-4d1d-9356-ab1878f88873';
 
@@ -22,6 +23,8 @@ const serviceOptions = [
 ];
 
 const App = () => {
+  const { handleSubmit, register, reset } = useForm({ defaultValues: initialFormState });
+
   const [form, setForm] = useState(initialFormState);
   const { selectedService, name, email, phone, address, makeModel, date, time } = form;
 
@@ -34,12 +37,27 @@ const App = () => {
     setForm((prevState) => ({ ...prevState, [id]: value }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const submitForm = useGetform();
-    submitForm(form)
-      .then(() => setForm(initialFormState))
-      .catch((error) => console.error('Form submission failed:', error));
+  const handleFormSubmit = (event) => {
+    // event.preventDefault();
+    // const submitForm = useGetform();
+    // submitForm(form)
+    //   .then(() => setForm(initialFormState))
+    //   .catch((error) => console.error('Form submission failed:', error));
+    fetch(formEndpoint, {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log('Form submission successful');
+          setForm(initialFormState);
+        } else {
+          console.error('Form submission failed');
+        }
+      })
+      .catch((error) => {
+        console.error('Form submission failed:', error);
+      });
   };
 
   return (
@@ -51,7 +69,7 @@ const App = () => {
       <main>
         <div className="schedule-card">
           <h2>Schedule an Appointment</h2>
-          <form id="appointment-form" onSubmit={handleSubmit}>
+          <form id="appointment-form" onSubmit={handleSubmit(handleFormSubmit)}>
             {Object.entries(initialFormState).map(([key, value]) => (
               <label htmlFor={key} key={key}>
                 {key.charAt(0).toUpperCase() + key.slice(1)}:
@@ -91,4 +109,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Schedule;

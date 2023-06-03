@@ -10,6 +10,7 @@ import Services from './components/Services';
 // import Reviews from './components/Reviews'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Reviews from './components/Reviews';
+import Schedule from './components/schedule';
 
 
 const client = new ApolloClient({
@@ -50,8 +51,9 @@ function App() {
       <NavTabs currentPage={currentPage} handlePageChange={handlePageChange}/>
       <AuthDetails />
       {renderPage()}
-
+    <Schedule />
     </div>
+  
     </ApolloProvider>
   );
 }
