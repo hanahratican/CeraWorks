@@ -9,8 +9,14 @@ const resolvers = {
         user: async (_, { _id }) => User.findById({ _id }),
     },
     Mutation: {
-        addReview: async (parent, { name, comment }) => {
-            return Review.create({ name, comment });
+        addReview: async (_, { name, comment }) => {
+            try {
+              const newReview = await Review.create({ name, comment });
+              return newReview;
+            } catch (error) {
+              console.error('Error adding review:', error);
+              throw new Error('Failed to add review');
+            }
         },
         createUser: async (parent, { email, password }) => {
             return User.create({ email, password });

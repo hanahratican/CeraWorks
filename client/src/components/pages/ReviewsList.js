@@ -8,7 +8,7 @@ const ReviewsList = ({ reviews }) => {
 
   return (
     <div>
-      <h3>Review</h3>
+      <h2>Reviews</h2>
       {reviews &&
         reviews.map((review) => (
           <div key={review._id} className="card mb-3">
