@@ -32,7 +32,7 @@ function App() {
     return <div>
       <NavTabs />
       <Home />
-      {/* <Services /> */}
+      <Services />
       </div>
     ;
   };

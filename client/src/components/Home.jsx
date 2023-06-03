@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 import ReviewsForm from './pages/ReviewsForm';
 import ReviewsList from './pages/ReviewsList';
-import Services from './Services';
+// import Services from './Services';
 
 import { QUERY_REVIEWS } from '../utils/queries';
 
@@ -23,7 +23,7 @@ const Home = () => {
           <div>
           </div>
         </div>
-        <Services />
+        {/* <Services /> */}
         <ReviewsForm />
         <div className="col-12 col-md-8 mb-3">
           {loading ? (

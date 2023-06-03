@@ -21,6 +21,7 @@ const NavTabs = ({ handlePageChange }) => {
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Services</li>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer' href="/reviews" onClick={() => handlePageChange('Reviews')}>Reviews</li>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Contact</li>
+          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Schedule</li>
         </ul>
 
       {/* Hamburger Menu*/}
@@ -35,6 +36,7 @@ const NavTabs = ({ handlePageChange }) => {
           <li className='py-6 text-4xl text-white'>Services</li>
           <li className='py-6 text-4xl text-white'>Reviews</li>
           <li className='py-6 text-4xl text-white'>Contact</li>
+          <li className='py-6 text-4xl text-white'>Schedule</li>
       </ul>
       
     </div>
