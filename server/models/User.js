@@ -1,4 +1,3 @@
-// Dont know if we need this...
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -13,6 +12,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: [true, 'Please enter a password'],
+        minlength: 5,
     },
 });
 
@@ -21,13 +21,14 @@ userSchema.pre('save', async function (next) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
+    next();
 });
 
 userSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
-}
+};
 
-const User = model('user', userSchema);
+const User = model('User', userSchema);
 
 module.exports = User;
 

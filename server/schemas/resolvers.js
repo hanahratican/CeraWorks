@@ -6,7 +6,12 @@ const resolvers = {
         reviews: async () => {
             return Review.find();
         },
-        user: async (_, { _id }) => User.findById({ _id }),
+        users: async () => {
+            return User.find();
+        },
+        // user: async (parent, { email }) => {
+        //     return User.findOne({ email });
+        // },
     },
     Mutation: {
         addReview: async (_, { name, comment }) => {
@@ -18,9 +23,14 @@ const resolvers = {
               throw new Error('Failed to add review');
             }
         },
-        createUser: async (parent, { email, password }) => {
-            return User.create({ email, password });
-        },
+        addUser: async (parent, { email, password }) => {
+            // First we create the user
+            const user = await User.create({ email, password });
+            // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
+            const token = signToken(user);
+            // Return an `Auth` object that consists of the signed token and user's information
+            return { token, user };
+          },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
             if (!user) {
