@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { GetformProvider, useGetform } from '@getform/react-getform';
 import { useForm } from 'react-hook-form';
 import Schedule from './pages/Schedule';
 
@@ -38,15 +37,12 @@ const App = () => {
     setForm((prevState) => ({ ...prevState, [id]: value }));
   };
 
-  const handleFormSubmit = (event) => {
-    // event.preventDefault();
-    // const submitForm = useGetform();
-    // submitForm(form)
-    //   .then(() => setForm(initialFormState))
-    //   .catch((error) => console.error('Form submission failed:', error));
+  const handleFormSubmit = () => {
+    
+    // Use fetch to send the form data to the endpoint
     fetch(formEndpoint, {
       method: 'POST',
-      body: JSON.stringify(initialFormState),
+      body: JSON.stringify(form),
     })
       .then((response) => {
         if (response.ok) {
@@ -77,7 +73,7 @@ const App = () => {
                 <input
                   type={key === 'email' ? 'email' : key === 'phone' ? 'tel' : 'text'}
                   id={key}
-                  value={value}
+                  value={form[key]} // Update the value attribute here
                   onChange={handleChange}
                   required
                   pattern={key === 'phone' ? '[0-9]+' : undefined}
