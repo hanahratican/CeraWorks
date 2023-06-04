@@ -16,7 +16,7 @@ const Reviews = () => {
                 
                 {/*  Card Container */}
             <ReviewsForm />
-                <div className="">
+                <div className="col-12 col-md-8 mb-3">
                     {loading ? (
                 <div>Loading...</div>
                 ) : (

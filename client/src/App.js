@@ -13,6 +13,7 @@ import Signup from './components/Signup';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Reviews from './components/Reviews';
 import Schedule from './components/schedule';
+import Contact from './components/Contact';
 
 
 const client = new ApolloClient({
@@ -39,6 +40,7 @@ function App() {
       <Home />
       <Services />
       <Reviews />
+      <Contact />
       </div>
     ;
   };
