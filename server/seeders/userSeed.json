@@ -2,5 +2,13 @@
     {
         "email": "hrat@yahoo.com",
         "password": "123456"
+    },
+    {
+        "email": "elip@gmail.com",
+        "password": "123456"
+    },
+    {
+        "email": "email@gmail.com",
+        "password": "password"
     }
 ]
