@@ -7,7 +7,6 @@ import AuthDetails from './components/AuthDetails';
 import ReviewsForm from './components/pages/ReviewsForm';
 import './App.css';
 import Services from './components/Services';
-// import Reviews from './components/Reviews'
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Reviews from './components/Reviews';
 
@@ -35,7 +34,6 @@ function App() {
       <NavTabs />
       <Home />
       <Services />
-      {/* <Reviews /> */}
       <Reviews />
       </div>
     ;
