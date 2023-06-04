@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Schedule from './pages/Schedule';
 
 const formEndpoint = 'https://getform.io/f/d454ae62-76a9-4d1d-9356-ab1878f88873';
 
@@ -15,22 +14,11 @@ const initialFormState = {
   time: '',
 };
 
-const serviceOptions = [
-  { label: 'Basic Detailing', price: '$50' },
-  { label: 'Interior Detailing', price: '$80' },
-  { label: 'Exterior Detailing', price: '$70' },
-  { label: 'Full Detailing', price: '$120' },
-];
-
 const App = () => {
-  const { handleSubmit, register, reset } = useForm({ defaultValues: initialFormState });
+  const { handleSubmit } = useForm({ defaultValues: initialFormState });
 
   const [form, setForm] = useState(initialFormState);
-  const { selectedService, name, email, phone, address, makeModel, date, time } = form;
-
-  const selectService = (service) => {
-    setForm((prevState) => ({ ...prevState, selectedService: service }));
-  };
+  const { name, email, phone, address, makeModel, date, time } = form;
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -38,7 +26,6 @@ const App = () => {
   };
 
   const handleFormSubmit = () => {
-    
     // Use fetch to send the form data to the endpoint
     fetch(formEndpoint, {
       method: 'POST',
@@ -58,51 +45,189 @@ const App = () => {
   };
 
   return (
-    <>
-      <div className="banner"></div>
-      <div className="logo-container">
-        <img src="../src/" alt="Logo" />
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
+      }}
+    >
+      <div
+        className="schedule-card"
+        style={{
+          position: 'relative',
+          width: '350px',
+          height: '650px',
+          padding: '20px',
+          backgroundColor: '#303030',
+          borderRadius: '4px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        }}
+      >
+        <h2 style={{ marginBottom: '20px', color: '#F38442', fontSize: '24px' }}>Schedule an Appointment</h2>
+        <form id="appointment-form" onSubmit={handleSubmit(handleFormSubmit)}>
+          <label htmlFor="name" style={{ display: 'block', marginTop: '10px', color: '#fff', fontSize: '14px' }}>
+            Name:
+          </label>
+          <input
+            type="text"
+            id="name"
+            value={name}
+            onChange={handleChange}
+            required
+            style={{
+              marginTop: '5px',
+              padding: '8px',
+              width: '100%',
+              boxSizing: 'border-box',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          />
+
+          <label htmlFor="email" style={{ display: 'block', marginTop: '10px', color: '#fff', fontSize: '14px' }}>
+            Email:
+          </label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={handleChange}
+            required
+            style={{
+              marginTop: '5px',
+              padding: '8px',
+              width: '100%',
+              boxSizing: 'border-box',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          />
+
+          <label htmlFor="phone" style={{ display: 'block', marginTop: '10px', color: '#fff', fontSize: '14px' }}>
+            Phone Number:
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            value={phone}
+            onChange={handleChange}
+            required
+            pattern="[0-9]+"
+            title="Numbers Only"
+            style={{
+              marginTop: '5px',
+              padding: '8px',
+              width: '100%',
+              boxSizing: 'border-box',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          />
+
+          <label htmlFor="address" style={{ display: 'block', marginTop: '10px', color: '#fff', fontSize: '14px' }}>
+            Address:
+          </label>
+          <input
+            type="text"
+            id="address"
+            value={address}
+            onChange={handleChange}
+            required
+            style={{
+              marginTop: '5px',
+              padding: '8px',
+              width: '100%',
+              boxSizing: 'border-box',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          />
+
+          <label htmlFor="makeModel" style={{ display: 'block', marginTop: '10px', color: '#fff', fontSize: '14px' }}>
+            Car Make and Model:
+          </label>
+          <input
+            type="text"
+            id="makeModel"
+            value={makeModel}
+            onChange={handleChange}
+            required
+            style={{
+              marginTop: '5px',
+              padding: '8px',
+              width: '100%',
+              boxSizing: 'border-box',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          />
+
+          <label htmlFor="date" style={{ display: 'block', marginTop: '10px', color: '#fff', fontSize: '14px' }}>
+            Date:
+          </label>
+          <input
+            type="date"
+            id="date"
+            value={date}
+            onChange={handleChange}
+            required
+            style={{
+              marginTop: '5px',
+              padding: '8px',
+              width: '100%',
+              boxSizing: 'border-box',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          />
+
+          <label htmlFor="time" style={{ display: 'block', marginTop: '10px', color: '#fff', fontSize: '14px' }}>
+            Time:
+          </label>
+          <input
+            type="time"
+            id="time"
+            value={time}
+            onChange={handleChange}
+            required
+            style={{
+              marginTop: '5px',
+              padding: '8px',
+              width: '100%',
+              boxSizing: 'border-box',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          />
+
+          <button
+            type="submit"
+            style={{
+              marginTop: '10px',
+              cursor: 'pointer',
+              backgroundColor: '#F38442',
+              color: '#fff',
+              transition: 'background-color 0.3s ease',
+              padding: '8px 16px',
+              border: 'none',
+              borderRadius: '4px',
+              fontSize: '14px',
+            }}
+          >
+            Submit
+          </button>
+        </form>
       </div>
-      <main>
-        <div className="schedule-card">
-          <h2>Schedule an Appointment</h2>
-          <form id="appointment-form" onSubmit={handleSubmit(handleFormSubmit)}>
-            {Object.entries(initialFormState).map(([key, value]) => (
-              <label htmlFor={key} key={key}>
-                {key.charAt(0).toUpperCase() + key.slice(1)}:
-                <input
-                  type={key === 'email' ? 'email' : key === 'phone' ? 'tel' : 'text'}
-                  id={key}
-                  value={form[key]} // Update the value attribute here
-                  onChange={handleChange}
-                  required
-                  pattern={key === 'phone' ? '[0-9]+' : undefined}
-                  title={key === 'phone' ? 'Numbers Only' : undefined}
-                />
-              </label>
-            ))}
-            <label htmlFor="selected-service">Service:</label>
-            <div className="service-buttons">
-              {serviceOptions.map(({ label, price }) => (
-                <button
-                  type="button"
-                  className={`service-button${selectedService === label ? ' selected' : ''}`}
-                  onClick={() => selectService(label)}
-                  key={label}
-                >
-                  {label}<br />
-                  <span className="service-price">{price}</span>
-                </button>
-              ))}
-            </div>
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      </main>
-      <footer>
-        <p>&copy; 2023 CeraWorks. All rights reserved.</p>
-      </footer>
-    </>
+    </div>
   );
 };
 
