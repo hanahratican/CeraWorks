@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Home from './components/Home';
 import NavTabs from './components/NavTabs';
-import AuthDetails from './components/AuthDetails';
 import ReviewsForm from './components/pages/ReviewsForm';
 import './App.css';
 import Services from './components/Services';
@@ -51,7 +50,6 @@ function App() {
     <div>
       
       <NavTabs currentPage={currentPage} handlePageChange={handlePageChange}/>
-      <AuthDetails />
       {renderPage()}
 
       <Login />
