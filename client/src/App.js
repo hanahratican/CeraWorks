@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import Home from './components/Home';
 import NavTabs from './components/NavTabs';
-import { Login } from './components/auth/Login';
-// import { Signup } from './components/auth/Signup';
 import AuthDetails from './components/AuthDetails';
 import ReviewsForm from './components/pages/ReviewsForm';
 import './App.css';
 import Services from './components/Services';
+
+import Login from './components/Login';
+import Signup from './components/Signup';
+
+// import Reviews from './components/Reviews'
+
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Reviews from './components/Reviews';
+import Schedule from './components/schedule';
 
 
 const client = new ApolloClient({
@@ -21,9 +26,9 @@ function App() {
   const [currentPage, setCurrentPage] = useState('About');
 
   const renderPage = () => {
-    if (currentPage === 'Login') {
-      return <Login />;
-    }
+    // if (currentPage === 'Login') {
+    //   return <Login />;
+    // }
     if (currentPage === 'Reviews') {
       return <ReviewsForm />;
     // }
@@ -49,7 +54,14 @@ function App() {
       <AuthDetails />
       {renderPage()}
 
+      <Login />
+      <Signup />
+
+
+    <Schedule />
+
     </div>
+  
     </ApolloProvider>
   );
 }

@@ -1,12 +1,18 @@
 const User = require('../models/User');
 const Review  = require('../models/Review');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
         reviews: async () => {
             return Review.find();
         },
-        user: async (_, { _id }) => User.findById({ _id }),
+        users: async () => {
+            return User.find();
+        },
+        // user: async (parent, { email }) => {
+        //     return User.findOne({ email });
+        // },
     },
     Mutation: {
         addReview: async (_, { name, comment }) => {
@@ -19,8 +25,13 @@ const resolvers = {
             }
         },
         createUser: async (parent, { email, password }) => {
-            return User.create({ email, password });
-        },
+            // First we create the user
+            const user = await User.create({ email, password });
+            // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
+            const token = signToken(user);
+            // Return an `Auth` object that consists of the signed token and user's information
+            return { token, user };
+          },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
             if (!user) {
