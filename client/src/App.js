@@ -4,7 +4,7 @@ import NavTabs from './components/NavTabs';
 import ReviewsForm from './components/pages/ReviewsForm';
 import './App.css';
 import Services from './components/Services';
-
+import Calendly from './components/pages/Calendly';
 import Login from './components/Login';
 import Signup from './components/Signup';
 
@@ -56,8 +56,8 @@ function App() {
       <Signup />
 
 
-    <Schedule />
-
+      <Schedule />
+      <Calendly />
     </div>
   
     </ApolloProvider>

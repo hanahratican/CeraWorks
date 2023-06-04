@@ -10,12 +10,11 @@
     "@testing-library/user-event": "^12.5.0",
     "firebase": "^9.22.1",
     "graphql": "^15.4.0",
-
     "jwt-decode": "^3.1.2",
     "react": "^17.0.1",
+    "react-calendly": "^4.1.1",
     "react-dom": "^17.0.1",
     "react-hook-form": "^7.44.3",
-
     "react-icons": "^4.8.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.1",
