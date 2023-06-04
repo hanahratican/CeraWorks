@@ -5,9 +5,9 @@ import AuthDetails from './components/AuthDetails';
 import ReviewsForm from './components/pages/ReviewsForm';
 import './App.css';
 import Services from './components/Services';
+
 import Login from './components/Login';
 import Signup from './components/Signup';
-
 
 // import Reviews from './components/Reviews'
 
@@ -39,7 +39,6 @@ function App() {
       <NavTabs />
       <Home />
       <Services />
-      {/* <Reviews /> */}
       <Reviews />
       </div>
     ;
