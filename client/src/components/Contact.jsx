@@ -5,7 +5,7 @@ import { faPhone, faEnvelope, faAddressCard } from '@fortawesome/free-solid-svg-
 
 const Contact = () => {
   return (
-    <footer className='w-full h-[350px] flex justify-between items-center px-4 bg-gradient-to-r from-zinc-950 to-zinc-500 border-b border-neutral-200'>
+    <footer name='contact' className='w-full h-[350px] flex justify-between items-center px-4 bg-gradient-to-r from-zinc-950 to-zinc-500 border-b border-neutral-200'>
         <div>
             <img src={Logo} alt='Cera Works logo' style={{width:"50px"}}></img>
         </div>
