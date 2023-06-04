@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const Review  = require('../models/Review');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
@@ -23,7 +24,7 @@ const resolvers = {
               throw new Error('Failed to add review');
             }
         },
-        addUser: async (parent, { email, password }) => {
+        createUser: async (parent, { email, password }) => {
             // First we create the user
             const user = await User.create({ email, password });
             // To reduce friction for the user, we immediately sign a JSON Web Token and log the user in after they are created
