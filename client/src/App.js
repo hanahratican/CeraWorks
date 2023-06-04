@@ -57,6 +57,7 @@ function App() {
 
 
       <Schedule />
+      
       <Calendly />
     </div>
   
