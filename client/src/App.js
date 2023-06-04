@@ -8,11 +8,10 @@ import Calendly from './components/pages/Calendly';
 import Login from './components/Login';
 import Signup from './components/Signup';
 
-// import Reviews from './components/Reviews'
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Reviews from './components/Reviews';
-import Schedule from './components/schedule';
+
 
 
 const client = new ApolloClient({
@@ -54,10 +53,6 @@ function App() {
 
       <Login />
       <Signup />
-
-
-      <Schedule />
-      
       <Calendly />
     </div>
   
