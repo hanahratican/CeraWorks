@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Home from './components/Home';
 import NavTabs from './components/NavTabs';
-import ReviewsForm from './components/pages/ReviewsForm';
+// import ReviewsForm from './components/pages/ReviewsForm';
 import './App.css';
 import Services from './components/Services';
 import Calendly from './components/pages/Calendly';
@@ -21,37 +21,16 @@ const client = new ApolloClient({
 
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('About');
-
-  const renderPage = () => {
-    // if (currentPage === 'Login') {
-    //   return <Login />;
-    // }
-    if (currentPage === 'Reviews') {
-      return <ReviewsForm />;
-    // }
-    // if (currentPage === 'Services') {
-    //   return <Services />;
-    }
-    return <div>
-      <NavTabs />
-      <Home />
-      <Services />
-      <Reviews />
-      <Contact />
-      </div>
-    ;
-  };
-
-  const handlePageChange = (page) => setCurrentPage(page);
   
   return (
     <ApolloProvider client={client}>
     <div>
       
-      <NavTabs currentPage={currentPage} handlePageChange={handlePageChange}/>
-      {renderPage()}
-
+      <NavTabs />
+      <Home />
+      <Services />
+      <Reviews />
+      <Contact />
       <Login />
       <Signup />
       <Calendly />
