@@ -4,12 +4,14 @@ import Services from '../components/Services';
 import Reviews from '../components/Reviews';
 import Contact from '../components/Contact';
 import Calendly from '../components/pages/Calendly';
+import NavTabs from '../components/NavTabs';
 
 const Home = () => {
 
 
   return (
   <>
+    <NavTabs />
     <div name='home' className='w-full h-screen bg-neutral-200 py-16 px-4 '>
         {/* Container */}
         <div className='max-w-[1000px] mx-auto px-8 h-full grid md:grid-cols-2 gap-4'>

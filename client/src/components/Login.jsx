@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Signup from './Signup';
 import Auth from '../utils/auth';
+import NavTabsLogin from './NavTabsLogin';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -42,6 +43,7 @@ const Login = (props) => {
 
   return (
     <>
+    <NavTabsLogin />
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
         <div className="card">

@@ -26,7 +26,7 @@ function App() {
     <ApolloProvider client={client}>
 
     <Router>
-      <NavTabs />
+      {/* <NavTabs /> */}
       {/* <Home /> */}
       {/* <Services />
       <Reviews />

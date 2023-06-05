@@ -50,8 +50,9 @@ const NavTabs = () => {
       {/* Mobile Menu */}
       <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-zinc-500 flex flex-col justify-center items-center cursor-pointer opacity-80'}>
           <li className='py-6 text-4xl text-white'>
-          <Link to='home' smooth={true} duration={500}>Home</Link></li>
-          <li className='py-6 text-4xl text-white'>Login</li>
+          <RouterLink to="/">Home</RouterLink></li>
+          <li className='py-6 text-4xl text-white'>
+          <RouterLink to="/login">Login</RouterLink></li>
           <li className='py-6 text-4xl text-white'>
           <Link to='services' smooth={true} duration={500} offset={-70}>Services</Link></li>
           <li className='py-6 text-4xl text-white'>
