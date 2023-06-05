@@ -8,6 +8,7 @@ A webpage for a local ceramic services and detailing business.
 - [Features](#features)
 - [Dependencies](#dependencies)
 - [Usage](#usage)
+- [Screenshots](#screenshots)
 - [Contributing](#contributing)
 - [Authors](#authors)
 - [License](#license)
@@ -45,6 +46,15 @@ To use the CeraWorks Car Detailing App, follow these steps:
 3. View the different services offered under Services.
 4. In the bottom right corner, click on the button which says "Click here to schedule!" to bring up Calendly and follow the instruction to book a service.
 5. Click on Reviews to view previous reviews or leave your own review.
+
+## Screenshots
+![image](https://github.com/hanahratican/CeraWorks/assets/119752452/e586efe6-b25e-4d37-9565-d2a0eee8956a)
+
+![image](https://github.com/hanahratican/CeraWorks/assets/119752452/b956162d-8272-43e9-b4b6-e89c917f629e)
+
+![image](https://github.com/hanahratican/CeraWorks/assets/119752452/dffb538f-4b07-49e3-ad2f-260597f4f070)
+
+![image](https://github.com/hanahratican/CeraWorks/assets/119752452/4e19dfaa-1c59-4763-896c-d26518a09718)
 
 
 ## Contributing
