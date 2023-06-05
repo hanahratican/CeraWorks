@@ -7,10 +7,10 @@ import Services from './components/Services';
 import Calendly from './components/pages/Calendly';
 import Login from './components/Login';
 import Signup from './components/Signup';
-
-
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Reviews from './components/Reviews';
+import Contact from './components/Contact';
+
 
 
 
@@ -38,6 +38,7 @@ function App() {
       <Home />
       <Services />
       <Reviews />
+      <Contact />
       </div>
     ;
   };

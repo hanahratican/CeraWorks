@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {FaBars, FaTimes} from 'react-icons/fa'
 import Logo from '../assets/logo.png'
+import {Link} from 'react-scroll'
 
 
 const NavTabs = ({ handlePageChange }) => {
@@ -16,11 +17,27 @@ const NavTabs = ({ handlePageChange }) => {
       
       {/* Navbar */}
         <ul className='hidden md:flex'>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer' href="#home" onClick={() => handlePageChange('Home')}>Home</li>
+          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
+            <Link to='home' smooth={true} duration={500}>
+              Home
+              </Link>
+              </li>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer' href="/auth/login" onClick={() => handlePageChange('Login')}>Login</li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Services</li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer' href="/reviews" onClick={() => handlePageChange('Reviews')}>Reviews</li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Contact</li>
+          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
+            <Link to='services' smooth={true} duration={500} offset={-70}>
+              Services
+              </Link>
+              </li>
+          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
+            <Link to='reviews' smooth={true} duration={500} offset={-80}>
+              Reviews
+              </Link>
+              </li>
+          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
+            <Link to='contact' smooth={true} duration={500}>
+              Contact
+              </Link>
+              </li>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Schedule</li>
         </ul>
 
@@ -30,12 +47,16 @@ const NavTabs = ({ handlePageChange }) => {
       </div>
 
       {/* Mobile Menu */}
-      <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-zinc-500 flex flex-col justify-center items-center'}>
-          <li className='py-6 text-4xl text-white'>Home</li>
+      <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-zinc-500 flex flex-col justify-center items-center cursor-pointer opacity-80'}>
+          <li className='py-6 text-4xl text-white'>
+          <Link to='home' smooth={true} duration={500}>Home</Link></li>
           <li className='py-6 text-4xl text-white'>Login</li>
-          <li className='py-6 text-4xl text-white'>Services</li>
-          <li className='py-6 text-4xl text-white'>Reviews</li>
-          <li className='py-6 text-4xl text-white'>Contact</li>
+          <li className='py-6 text-4xl text-white'>
+          <Link to='services' smooth={true} duration={500} offset={-70}>Services</Link></li>
+          <li className='py-6 text-4xl text-white'>
+          <Link to='reviews' smooth={true} duration={500} offset={-80}>Reviews</Link></li>
+          <li className='py-6 text-4xl text-white'>
+          <Link to='contact' smooth={true} duration={500}>Contact</Link></li>
           <li className='py-6 text-4xl text-white'>Schedule</li>
       </ul>
       

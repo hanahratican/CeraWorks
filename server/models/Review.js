@@ -4,6 +4,7 @@ const reviewSchema = new Schema({
     name: {
         type: String,
         required: [true, 'Please enter a name'],
+        
     },
     comment: {
         type: String,
