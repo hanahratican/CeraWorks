@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
-
+import { Link as RouterLink } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { CREATE_USER } from '../utils/mutations';
+import NavTabsLogin from './NavTabsLogin';
 
 import Auth from '../utils/auth';
 
@@ -40,10 +41,16 @@ const Signup = () => {
   };
 
   return (
+    <>
+    <NavTabsLogin />
     <main className="flex justify-center items-center h-screen bg-neutral-200">
       <div className="w-96 p-6 shadow-lg bg-zinc-900 rounded-md">
         <div className="card">
-        <h4 className="text-3xl block text-center font-semibold text-neutral-200"><FontAwesomeIcon icon={faUser} style={{color: "#f38442", width:"50px"}}/>Sign Up</h4>
+        <h4 className="text-3xl mr-3 block text-center font-semibold text-neutral-200">
+          <FontAwesomeIcon icon={faUser} style={{color: "#f38442", width:"50px"}}/>
+          Sign Up
+          </h4>
+          <a className='mt-3 block text-center text-neutral-200'>Please Create an Account</a>
           <div className="card-body mt-3">
             {data ? (
               <p>
@@ -77,6 +84,7 @@ const Signup = () => {
                 >
                   Submit
                 </button>
+                <p className='mt-3 block text-center text-neutral-200'>Already have an account? <RouterLink className='text-[#f38442] font-semibold hover:text-neutral-200' to="/login">Log In</RouterLink></p>
               </form>
             )}
 
@@ -89,6 +97,7 @@ const Signup = () => {
         </div>
       </div>
     </main>
+    </>
   );
 };
 

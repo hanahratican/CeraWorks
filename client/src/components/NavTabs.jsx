@@ -19,7 +19,7 @@ const NavTabs = () => {
       {/* Navbar */}
         <ul className='hidden md:flex'>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
-          <RouterLink to="/">Home</RouterLink>
+          <Link to="home" smooth={true} duration={500}>Home</Link>
               </li>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
             <RouterLink to="/login">Login</RouterLink>
@@ -39,7 +39,6 @@ const NavTabs = () => {
               Contact
               </Link>
               </li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Schedule</li>
         </ul>
 
       {/* Hamburger Menu*/}
@@ -50,7 +49,7 @@ const NavTabs = () => {
       {/* Mobile Menu */}
       <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-zinc-500 flex flex-col justify-center items-center cursor-pointer opacity-80'}>
           <li className='py-6 text-4xl text-white'>
-          <RouterLink to="/">Home</RouterLink></li>
+          <Link to="home" smooth={true} duration={500}>Home</Link></li>
           <li className='py-6 text-4xl text-white'>
           <RouterLink to="/login">Login</RouterLink></li>
           <li className='py-6 text-4xl text-white'>
@@ -59,7 +58,6 @@ const NavTabs = () => {
           <Link to='reviews' smooth={true} duration={500} offset={-80}>Reviews</Link></li>
           <li className='py-6 text-4xl text-white'>
           <Link to='contact' smooth={true} duration={500}>Contact</Link></li>
-          <li className='py-6 text-4xl text-white'>Schedule</li>
       </ul>
       
     </div>
