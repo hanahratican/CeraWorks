@@ -39,7 +39,6 @@ const NavTabs = () => {
               Contact
               </Link>
               </li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Schedule</li>
         </ul>
 
       {/* Hamburger Menu*/}

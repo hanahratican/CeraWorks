@@ -43,7 +43,10 @@ const Signup = () => {
     <main className="flex justify-center items-center h-screen bg-neutral-200">
       <div className="w-96 p-6 shadow-lg bg-zinc-900 rounded-md">
         <div className="card">
-        <h4 className="text-3xl block text-center font-semibold text-neutral-200"><FontAwesomeIcon icon={faUser} style={{color: "#f38442", width:"50px"}}/>Sign Up</h4>
+        <h4 className="text-3xl block text-center font-semibold text-neutral-200">
+          <FontAwesomeIcon icon={faUser} style={{color: "#f38442", width:"50px"}}/>
+          Sign Up
+          </h4>
           <div className="card-body mt-3">
             {data ? (
               <p>
