@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import { Link as RouterLink } from 'react-router-dom';
 import Auth from '../utils/auth';
+import NavTabsLogin from './NavTabsLogin';
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -42,14 +44,17 @@ const Login = (props) => {
   };
 
   return (
+    
     <>
+    <NavTabsLogin />
     <main className="flex justify-center items-center h-screen bg-neutral-200">
       <div className="w-96 p-6 shadow-lg bg-zinc-900 rounded-md">
         <div className="card">
-          <h4 className="text-3xl block text-center font-semibold text-neutral-200">
+          <h4 className="text-3xl mr-3 block text-center font-semibold text-neutral-200">
             <FontAwesomeIcon icon={faUser} style={{color: "#f38442", width:"50px"}}/>
-            Login
+            Log In
             </h4>
+            <a className='mt-3 block text-center text-neutral-200'>Welcome Back! Log In with your credentials</a>
           <div className="card-body mt-3">
             {data ? (
               <p>
@@ -83,6 +88,7 @@ const Login = (props) => {
                 >
                   Submit
                 </button>
+                <p className='mt-3 block text-center text-neutral-200'>Don't have an account? <RouterLink className='text-[#f38442] font-semibold hover:text-neutral-200' to="/signup">Sign Up</RouterLink></p>
               </form>
             )}
 
