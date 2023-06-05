@@ -58,7 +58,6 @@ const NavTabs = () => {
           <Link to='reviews' smooth={true} duration={500} offset={-80}>Reviews</Link></li>
           <li className='py-6 text-4xl text-white'>
           <Link to='contact' smooth={true} duration={500}>Contact</Link></li>
-          <li className='py-6 text-4xl text-white'>Schedule</li>
       </ul>
       
     </div>
