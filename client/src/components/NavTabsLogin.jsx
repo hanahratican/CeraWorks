@@ -5,7 +5,7 @@ import {Link} from 'react-scroll'
 import { Link as RouterLink } from 'react-router-dom';
 
 
-const NavTabs = () => {
+const NavTabsLogin = () => {
 
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
@@ -24,22 +24,6 @@ const NavTabs = () => {
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
             <RouterLink to="/login">Login</RouterLink>
           </li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
-            <Link to='services' smooth={true} duration={500} offset={-70}>
-              Services
-              </Link>
-              </li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
-            <Link to='reviews' smooth={true} duration={500} offset={-80}>
-              Reviews
-              </Link>
-              </li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
-            <Link to='contact' smooth={true} duration={500}>
-              Contact
-              </Link>
-              </li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Schedule</li>
         </ul>
 
       {/* Hamburger Menu*/}
@@ -50,19 +34,13 @@ const NavTabs = () => {
       {/* Mobile Menu */}
       <ul className={!nav ? 'hidden' : 'absolute top-0 left-0 w-full h-screen bg-zinc-500 flex flex-col justify-center items-center cursor-pointer opacity-80'}>
           <li className='py-6 text-4xl text-white'>
-          <Link to='home' smooth={true} duration={500}>Home</Link></li>
-          <li className='py-6 text-4xl text-white'>Login</li>
+          <RouterLink to="/">Home</RouterLink></li>
           <li className='py-6 text-4xl text-white'>
-          <Link to='services' smooth={true} duration={500} offset={-70}>Services</Link></li>
-          <li className='py-6 text-4xl text-white'>
-          <Link to='reviews' smooth={true} duration={500} offset={-80}>Reviews</Link></li>
-          <li className='py-6 text-4xl text-white'>
-          <Link to='contact' smooth={true} duration={500}>Contact</Link></li>
-          <li className='py-6 text-4xl text-white'>Schedule</li>
+          <RouterLink to="/">Login</RouterLink></li>
       </ul>
       
     </div>
   )
 }
 
-export default NavTabs
+export default NavTabsLogin
