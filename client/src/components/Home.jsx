@@ -1,9 +1,15 @@
 import React from 'react';
+import Services from '../components/Services';
+import Reviews from '../components/Reviews';
+import Contact from '../components/Contact';
+import Calendly from '../components/pages/Calendly';
+
 
 const Home = () => {
 
 
   return (
+    <>
     <div name='home' className='w-full h-screen bg-neutral-200'>
 
         {/* Container */}
@@ -17,6 +23,11 @@ const Home = () => {
           </div>
         </div>
     </div>
+     <Services />
+     <Reviews />
+     <Contact />
+     <Calendly />
+    </>
   );
 }
 

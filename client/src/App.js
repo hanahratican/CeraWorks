@@ -10,7 +10,7 @@ import Signup from './components/Signup';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Reviews from './components/Reviews';
 import Contact from './components/Contact';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 
@@ -24,17 +24,21 @@ function App() {
   
   return (
     <ApolloProvider client={client}>
-    <div>
-      
+
+    <Router>
       <NavTabs />
-      <Home />
-      <Services />
+      {/* <Home /> */}
+      {/* <Services />
       <Reviews />
       <Contact />
       <Login />
       <Signup />
-      <Calendly />
-    </div>
+      <Calendly /> */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path='/login' element={<Login />} />
+      </Routes>
+    </Router>
   
     </ApolloProvider>
   );

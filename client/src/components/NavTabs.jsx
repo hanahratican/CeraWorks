@@ -2,9 +2,10 @@ import React, {useState} from 'react'
 import {FaBars, FaTimes} from 'react-icons/fa'
 import Logo from '../assets/logo.png'
 import {Link} from 'react-scroll'
+import { Link as RouterLink } from 'react-router-dom';
 
 
-const NavTabs = ({ handlePageChange }) => {
+const NavTabs = () => {
 
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
@@ -18,11 +19,11 @@ const NavTabs = ({ handlePageChange }) => {
       {/* Navbar */}
         <ul className='hidden md:flex'>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
-            <Link to='home' smooth={true} duration={500}>
-              Home
-              </Link>
+          <RouterLink to="/">Home</RouterLink>
               </li>
-          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer' href="/auth/login" onClick={() => handlePageChange('Login')}>Login</li>
+          <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
+            <RouterLink to="/login">Login</RouterLink>
+          </li>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
             <Link to='services' smooth={true} duration={500} offset={-70}>
               Services
