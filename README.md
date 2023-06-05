@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+# CeraWorks
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A webpage for a local ceramic services and detailing business.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Description](#description)
+- [Features](#features)
+- [Dependencies](#dependencies)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Authors](#authors)
+- [License](#license)
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A MERN stack application for a local ceramic services business. Clients may book appointments with CeraWorks through calendly, login or sign up, submit reviews and check out reviews from previous clients. This project implements React for the front end, GraphQL, Node.js and Express.js on the back end, Tailwind for CSS styling, Apollo Client and Apollo Server, and MongoDB for the database. We also embedded a Calendly widget for customers to book services.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Read about the services that are offered.
+- Login or signup for easier access in the future.
+- Read reviews or submit your own review.
+- Book appointments through Calendly.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Express 
+* React 
+* bcrypt 
+* React-Calendly 
+* Apollo Client and Apollo Server 
+* GraphQl 
+* Mongoose 
+* JWT 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Usage
 
-### `npm run eject`
+To use the CeraWorks Car Detailing App, follow these steps:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Visit the homepage of the app.
+2. Click Login to either login or sign up.
+3. View the different services offered under Services.
+4. In the bottom right corner, click on the button which says "Click here to schedule!" to bring up Calendly and follow the instruction to book a service.
+5. Click on Reviews to view previous reviews or leave your own review.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contributing
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Contributions to the CeraWorks App are welcome! If you would like to contribute, please follow these guidelines:
 
-## Learn More
+- Submit bug reports or feature requests by opening an issue on the GitHub repository.
+- Fork the repository, make your changes, and submit a pull request for review.
+- Follow the existing coding conventions and style guide.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Authors
 
-### Code Splitting
+* [Hanah Ratican](https://github.com/hanahratican)
+* [Ruben Franco](https://github.com/RubenFr74)
+* [Eli Palma](https://github.com/Epalma98)
+* [Ryan Lierman](https://github.com/ArdentShadow)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## Acknowledgments
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

@@ -9,7 +9,7 @@ const Reviews = () => {
   const reviews = data?.reviews || [];
     
   return (
-    <div name='reviews' className='w-full h-full bg-neutral text-zinc-950 bg-neutral-200'>
+    <div name='reviews' id='reviews' className='w-full h-full bg-neutral text-zinc-950 bg-neutral-200'>
         
         {/* Container */}
         <div className='max-w-[1000px] mx-auto p-3 flex flex-col justify-center w-full h-full'>

@@ -1,10 +1,15 @@
 import React from 'react';
 import CeraWorks from '../assets/cera_work.jpg'
+import Services from '../components/Services';
+import Reviews from '../components/Reviews';
+import Contact from '../components/Contact';
+import Calendly from '../components/pages/Calendly';
 
 const Home = () => {
 
 
   return (
+  <>
     <div name='home' className='w-full h-screen bg-neutral-200 py-16 px-4 '>
         {/* Container */}
         <div className='max-w-[1000px] mx-auto px-8 h-full grid md:grid-cols-2 gap-4'>
@@ -20,6 +25,11 @@ const Home = () => {
           </div>
         </div>
     </div>
+     <Services />
+     <Reviews />
+     <Contact />
+     <Calendly />
+    </>
   );
 }
 
