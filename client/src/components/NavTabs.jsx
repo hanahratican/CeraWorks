@@ -1,21 +1,11 @@
 import React, {useState} from 'react'
 import {FaBars, FaTimes} from 'react-icons/fa'
 import Logo from '../assets/logo.png'
-import { Link, animateScroll } from 'react-scroll'
+import {Link} from 'react-scroll'
 import { Link as RouterLink } from 'react-router-dom';
 
 
 const NavTabs = () => {
-
-  const handleScrollToSection = (sectionId) => {
-    const sectionElement = document.getElementById(sectionId);
-  
-    if (sectionElement) {
-      animateScroll.scrollTo(sectionElement.offsetTop);
-    } else {
-      console.error(`Section element with ID '${sectionId}' not found.`);
-    }
-  };
 
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
@@ -40,15 +30,15 @@ const NavTabs = () => {
               </Link>
               </li>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
-            <RouterLink to="/" onClick={() => handleScrollToSection()}>
-              Reviews </RouterLink>
-            <Link to='reviews' smooth={true} duration={500} offset={-80}></Link>
-            </li>
+            <Link to='reviews' smooth={true} duration={500} offset={-80}>
+              Reviews
+              </Link>
+              </li>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>
-          <RouterLink to="/" onClick={() => handleScrollToSection()}>
-              Contact </RouterLink>
-            <Link to='contact' smooth={true} duration={500} offset={-80}></Link>
-            </li>
+            <Link to='contact' smooth={true} duration={500}>
+              Contact
+              </Link>
+              </li>
           <li className='text-[#F38442] hover:text-white hover:border-b border-[#F38442] hover:cursor-pointer'>Schedule</li>
         </ul>
 
